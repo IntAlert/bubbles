@@ -1,9 +1,27 @@
 var express = require('express');
 var router = express.Router();
+var models = require('../models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('users');
+});
+
+router.get('/all', function(req, res, next) {
+
+
+	models.User.findAll({
+		attributes: ['id', 'fb_id', 'displayName', 'gender']
+	})
+  	.then(function(users) {
+
+		// respond
+		res.json({
+			users:users
+		})
+
+	});
+
 });
 
 module.exports = router;

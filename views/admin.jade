@@ -9,21 +9,25 @@ block content
 				md-content(layout-padding)
 					ul.tags
 						li(ng-repeat="tag in tags.all")
-							md-checkbox(aria-label="{{tag.name}}", ng-value="tag.id")
+							md-checkbox(aria-label="{{tag.name}}", ng-model="query.tags[tag.id]")
 								span {{tag.name}}
 					
 					md-input-container.scrapes
 						label Scrape Date #1
-						md-select(ng-model="scrape1", aria-label="Scrape Date #1")
-							md-option(ng-repeat="scrape in scrapes", ng-value="scrape.id") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+						md-select(ng-model="query.scrape1", aria-label="Scrape Date #1")
+							md-option(ng-repeat="scrape in scrapes", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
 
 					md-input-container.scrapes
 						label Scrape Date #2
-						md-select(ng-model="scrape2", aria-label="Scrape Date #1")
-							md-option(ng-repeat="scrape in scrapes", ng-value="scrape.id") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+						md-select(ng-model="query.scrape2", aria-label="Scrape Date #2")
+							md-option(ng-repeat="scrape in scrapes", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+					
+					//- pre {{ query | json }}
 
 			md-content(flex, layout-padding)
+				h2 {{query.scrape1.updatedAt | date:'dd/MM/yyyy'}}
 				div(ng-include=" '/partials/friendship-graph.tmpl.html' ")
 
 			md-content(flex, layout-padding)
+				h2 {{query.scrape2.updatedAt | date:'dd/MM/yyyy'}}
 				div(ng-include=" '/partials/friendship-graph.tmpl.html' ")

@@ -3,6 +3,6 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 	$scope.tags = TagService;
 	$scope.friendships = FriendshipService.getByScrapeId(1);
 	$scope.scrapes = ScrapeService.all;
-
+	$scope.query = {}
 
 })

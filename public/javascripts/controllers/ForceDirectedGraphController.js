@@ -4,7 +4,7 @@ app.controller('ForceDirectedGraphController', function($scope){
             chart: {
                 type: 'forceDirectedGraph',
                 height: 450,
-                 width: (function(){ return nv.utils.windowSize().width - 450 })(),
+                 width: (function(){ return nv.utils.windowSize().width - 850 })(),
                 margin:{top: 20, right: 20, bottom: 20, left: 20},
                 color: function(d){
                     return color(d.group)
