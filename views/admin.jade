@@ -1,0 +1,28 @@
+extends layout
+
+
+block content
+	div(ng-controller="BubblesAdminController", flex, layout="row", layout-wrap, layout-padding)
+		md-sidenav
+			h2 Tags
+			ul.tags
+				li(ng-repeat="tag in tags") {{tag.name}}
+			
+			h2 Scrape to compare #1
+			ul.scrapes
+				li(ng-repeat="scrape in scrapes") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+
+			h2 Scrape to compare #2
+			md-checkbox(ng-model="compare") Compare?
+			ul.scrapes
+				li(ng-repeat="scrape in scrapes") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+			//- scrape picker 1
+			//- scrape picker 2 (with checkbox)
+		div(flex)
+			h2 Scrape #1
+			div(ng-template="/partials/friendship-graph.tmpl.html")
+			//- d3 directed force diagram
+		div(flex)
+			h2 Scrape #2
+			div(ng-template="/partials/friendship-graph.tmpl.html")
+			//- d3 directed force diagram
