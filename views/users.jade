@@ -1,0 +1,19 @@
+extends layout
+
+
+block content
+	div(ng-controller="BubblesUserController", flex, layout="column", layout-wrap, layout-padding)
+
+		section(layout="row", flex)
+
+			md-content(flex, layout-padding, layout-wrap, layout="row")
+				md-card(ng-repeat="user in users.all")
+					ul
+						li
+							div {{user.id}}
+							div {{user.displayName}}
+							md-button(ng-click="showUser(user)")
+
+			md-sidenav.md-sidenav-right(md-component-id="right", md-is-locked-open="true", md-whiteframe="4")
+				md-content(layout-padding)
+					pre {{userDetail | json}}
