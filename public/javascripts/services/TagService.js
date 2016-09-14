@@ -1,25 +1,13 @@
-app.factory('TagService', function() {
+app.factory('TagService', function($http) {
 
 	var instance = {
-		all: [
-			{
-				id:1,
-				name: "Tag 1"
-			},
-			{
-				id:2,
-				name: "Tag 2"
-			},
-			{
-				id:3,
-				name: "Tag 3"
-			},
-			{
-				id:4,
-				name: "Tag 4"
-			}
-		]
+		all: []
 	}
+
+	$http.get('/tags')
+		.then(function(response){
+			instance.all = response.data.tags
+		})
 
 	return instance
 

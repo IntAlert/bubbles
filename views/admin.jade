@@ -2,27 +2,28 @@ extends layout
 
 
 block content
-	div(ng-controller="BubblesAdminController", flex, layout="row", layout-wrap, layout-padding)
-		md-sidenav
-			h2 Tags
-			ul.tags
-				li(ng-repeat="tag in tags") {{tag.name}}
-			
-			h2 Scrape to compare #1
-			ul.scrapes
-				li(ng-repeat="scrape in scrapes") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+	div(ng-controller="BubblesAdminController", flex, layout="column", layout-wrap, layout-padding)
 
-			h2 Scrape to compare #2
-			md-checkbox(ng-model="compare") Compare?
-			ul.scrapes
-				li(ng-repeat="scrape in scrapes") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
-			//- scrape picker 1
-			//- scrape picker 2 (with checkbox)
-		div(flex)
-			h2 Scrape #1
-			div(ng-template="/partials/friendship-graph.tmpl.html")
-			//- d3 directed force diagram
-		div(flex)
-			h2 Scrape #2
-			div(ng-template="/partials/friendship-graph.tmpl.html")
-			//- d3 directed force diagram
+		section(layout="row", flex)
+			md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="true", md-whiteframe="4")
+				md-content(layout-padding)
+					ul.tags
+						li(ng-repeat="tag in tags.all")
+							md-checkbox(aria-label="{{tag.name}}", ng-value="tag.id")
+								span {{tag.name}}
+					
+					md-input-container.scrapes
+						label Scrape Date #1
+						md-select(ng-model="scrape1", aria-label="Scrape Date #1")
+							md-option(ng-repeat="scrape in scrapes", ng-value="scrape.id") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+
+					md-input-container.scrapes
+						label Scrape Date #2
+						md-select(ng-model="scrape2", aria-label="Scrape Date #1")
+							md-option(ng-repeat="scrape in scrapes", ng-value="scrape.id") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+
+			md-content(flex, layout-padding)
+				div(ng-include=" '/partials/friendship-graph.tmpl.html' ")
+
+			md-content(flex, layout-padding)
+				div(ng-include=" '/partials/friendship-graph.tmpl.html' ")
