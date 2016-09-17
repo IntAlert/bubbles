@@ -11,7 +11,8 @@ router.get('/all', function(req, res, next) {
 
 
 	models.User.findAll({
-		attributes: ['id', 'fb_id', 'displayName', 'gender']
+		attributes: ['id', 'fb_id', 'displayName', 'gender'],
+		include: [models.Tag]
 	})
   	.then(function(users) {
 

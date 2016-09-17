@@ -49,17 +49,26 @@ html(class='no-js')
     script(src='/components/nvd3/build/nv.d3.js')
     script(src='/components/angular-nvd3/dist/angular-nvd3.js')
 
+
     script(src='/javascripts/app.js')
 
+
+    //- Services
     script(src="/javascripts/services/FriendshipService.js")
     script(src="/javascripts/services/TagService.js")
     script(src="/javascripts/services/ScrapeService.js")
     script(src="/javascripts/services/UserService.js")
 
+    //- controllers
     script(src="/javascripts/controllers/BubblesLoginController.js")
     script(src="/javascripts/controllers/BubblesAdminController.js")
     script(src="/javascripts/controllers/BubblesUserController.js")
     script(src="/javascripts/controllers/ForceDirectedGraphController.js")
+
+    //- Directives
+    script(src="/components/checklist-model/checklist-model.js")
+
+
 
     script.
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

@@ -6,14 +6,37 @@ block content
 
 		section(layout="row", flex)
 
-			md-content(flex, layout-padding, layout-wrap, layout="row")
-				md-card(ng-repeat="user in users.all")
-					ul
-						li
-							div {{user.id}}
-							div {{user.displayName}}
-							md-button(ng-click="showUser(user)")
+			md-content(
+				flex
+				layout-padding
+				layout-wrap
+				layout="row"
+				)
+				md-card(
+					ng-repeat="user in users.all"
+					layout-align="center center"
+					)
+					div
+						img(ng-src="http://graph.facebook.com/{{user.fb_id}}/picture?type=square")
+					div {{user.displayName}}
+					div 
+						md-button(ng-click="showUser(user)") Tag
 
-			md-sidenav.md-sidenav-right(md-component-id="right", md-is-locked-open="true", md-whiteframe="4")
+			md-sidenav.md-sidenav-right(
+				md-component-id="right"
+				md-is-locked-open="true"
+				md-whiteframe="4"
+				)
 				md-content(layout-padding)
 					pre {{userDetail | json}}
+					pre {{tags.all | json}}
+					ul.tags
+						li(ng-repeat="tag in tags.all")
+							md-checkbox(
+								type="checkbox"
+								checklist-model="userDetail.Tags"
+								checklist-value="tag"
+								checklist-comparator=".id"
+								aria-label="{{tag.name}}"
+								)
+									{{tag.name}}

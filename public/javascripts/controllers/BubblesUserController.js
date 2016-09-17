@@ -2,6 +2,7 @@ app.controller('BubblesUserController', function ($scope, $window, $location, $a
 
 
 	$scope.users = UserService
+	$scope.tags = TagService
 
 
 	$scope.userDetail = {}
@@ -10,5 +11,11 @@ app.controller('BubblesUserController', function ($scope, $window, $location, $a
 	$scope.showUser = function(user) {
 		$scope.userDetail = user
 	}
+
+	$scope.compareTags = function(tag1, tag2){
+		console.log(tag1)
+        return tag1.id === tag2.id;
+    };
+
 
 })

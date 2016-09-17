@@ -1,28 +1,15 @@
-app.factory('UserService', function() {
+app.factory('UserService', function($http) {
 
 	var instance = {
-		all: [
-			{
-				id: 1,
-				displayName:'bob'
-			},
-
-			{
-				id: 2,
-				displayName:'bob2'
-			},
-
-			{
-				id: 3,
-				displayName:'bob3'
-			},
-
-			{
-				id: 4,
-				displayName:'bob4'
-			}
-		]
+		all: []
 	}
+
+	$http.get('/users/all')
+		.then(function(response){
+			var usersAppended = []
+
+			instance.all = response.data.users
+		})
 
 	return instance
 
