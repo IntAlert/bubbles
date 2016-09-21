@@ -1,4 +1,4 @@
-app.controller('BubblesUserController', function ($scope, $window, $location, $anchorScroll, TagService, UserService) {
+app.controller('BubblesUserController', function ($scope, $window, $location, $anchorScroll, TagService, UserService, $mdSidenav) {
 
 
 	$scope.users = UserService
@@ -8,14 +8,19 @@ app.controller('BubblesUserController', function ($scope, $window, $location, $a
 	$scope.userDetail = {}
 
 
-	$scope.showUser = function(user) {
-		$scope.userDetail = user
+	$scope.showUserDetail = function(user) {
+		
+		var userDetailSideNav = $mdSidenav('userDetail');
+
+		userDetailSideNav.close()
+			.then(function () {
+				$scope.userDetail = user
+				userDetailSideNav.open()
+			});
 	}
 
-	$scope.compareTags = function(tag1, tag2){
-		console.log(tag1)
-        return tag1.id === tag2.id;
-    };
-
+	$scope.updateTagging = function() {
+		
+	}
 
 })

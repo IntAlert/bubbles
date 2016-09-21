@@ -7,27 +7,36 @@ block content
 		section(layout="row", flex)
 			md-sidenav.md-sidenav-left(md-component-id="left", md-is-locked-open="true", md-whiteframe="4")
 				md-content(layout-padding)
+					h2 Tags
 					ul.tags
-						li(ng-repeat="tag in tags.all")
-							md-checkbox(aria-label="{{tag.name}}", ng-model="query.tags[tag.id]")
-								span {{tag.name}}
-					
-					md-input-container.scrapes
-						label Scrape Date #1
-						md-select(ng-model="query.scrape1", aria-label="Scrape Date #1")
-							md-option(ng-repeat="scrape in scrapes", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+						li(ng-repeat="tag in tags.all", layout-wrap, flex, layout="row")
+							div(flex=50, style="padding-top:25px")
+								md-checkbox(
+									aria-label="{{tag.name}}"
+									ng-model="query.tags[tag.id]")
+									span {{tag.name}}
+							div(flex=50)
+								md-color-picker(
+									ng-model="valueObj"
+								)
 
-					md-input-container.scrapes
-						label Scrape Date #2
-						md-select(ng-model="query.scrape2", aria-label="Scrape Date #2")
-							md-option(ng-repeat="scrape in scrapes", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
+					
+					
+
+					
 					
 					//- pre {{ query | json }}
 
 			md-content(flex, layout-padding)
-				h2 {{query.scrape1.updatedAt | date:'dd/MM/yyyy'}}
+				md-input-container.scrapes(layout="column", layout-align="center center")
+					label Scrape Date #1
+					md-select(ng-model="query.scrape1", aria-label="Scrape Date #1")
+						md-option(ng-repeat="scrape in scrapes", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
 				div(ng-include=" '/partials/friendship-graph.tmpl.html' ")
 
 			md-content(flex, layout-padding)
-				h2 {{query.scrape2.updatedAt | date:'dd/MM/yyyy'}}
+				md-input-container.scrapes(layout="column", layout-align="center center")
+					label Scrape Date #2
+					md-select(ng-model="query.scrape2", aria-label="Scrape Date #2")
+						md-option(ng-repeat="scrape in scrapes", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
 				div(ng-include=" '/partials/friendship-graph.tmpl.html' ")

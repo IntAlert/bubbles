@@ -5,7 +5,8 @@ var app = angular
 			'ngMaterial', 
 			'ngMessages', 
 			'checklist-model',
-			'ui.utils.masks'
+			'ui.utils.masks',
+			'mdColorPicker'
 		]
 	)
 	.config(function($compileProvider, $locationProvider){

@@ -4,7 +4,7 @@ var models = require('../models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('users');
+  res.render('invites');
 });
 
 module.exports = router;

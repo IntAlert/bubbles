@@ -10,6 +10,8 @@ var users = require('./routes/users');
 var auth = require('./routes/auth');
 var tags = require('./routes/tags');
 var friendships = require('./routes/friendships');
+var invites = require('./routes/invites');
+var api_scrapes = require('./routes/api/scrapes');
 
 var app = express();
 
@@ -30,6 +32,11 @@ app.use('/users', users);
 app.use('/auth', auth);
 app.use('/friendships', friendships);
 app.use('/tags', tags);
+app.use('/invites', invites);
+
+// API routes
+app.use('/api/scrapes', api_scrapes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
