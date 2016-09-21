@@ -4,7 +4,7 @@ app.factory('UserService', function($http) {
 		all: []
 	}
 
-	$http.get('/users/all')
+	$http.get('/api/users/all')
 		.then(function(response){
 			var usersAppended = []
 

@@ -5,17 +5,7 @@ var models = require('../models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-
-  models.Tag.findAll()
-  	.then(function(tags) {
-
-		// respond
-		res.json({
-			tags:tags
-		})
-
-	});
-
+  res.render('tags');
 });
 
 module.exports = router;

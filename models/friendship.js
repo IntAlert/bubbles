@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Friendship = sequelize.define('Friendship', {
     friend1_id: DataTypes.STRING,
-    friend2_id: DataTypes.TEXT
+    friend2_id: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

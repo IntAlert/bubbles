@@ -1,24 +1,20 @@
-app.factory('ScrapeService', function() {
+app.factory('ScrapeService', function($http) {
 
 	var instance = {
-		all: [
-			{
-				id:1,
-				updatedAt: new Date()
-			},
-			{
-				id:2,
-				updatedAt: new Date()
-			},
-			{
-				id:3,
-				updatedAt: new Date()
-			},
-			{
-				id:4,
-				updatedAt: new Date()
-			}
-		]
+		all: []
+	}
+
+	// load all
+	$http.get('/scrapes')
+		.then(function(response){
+			instance.all = response.data.tags
+		})
+
+	instance.getById = function(id) {
+		return $http.get('/scrapes/' + id)
+			.then(function(response){
+				return response.tag
+			})
 	}
 
 	return instance

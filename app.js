@@ -9,9 +9,11 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var tags = require('./routes/tags');
-var friendships = require('./routes/friendships');
 var invites = require('./routes/invites');
+
 var api_scrapes = require('./routes/api/scrapes');
+var api_users = require('./routes/api/users');
+var api_tags = require('./routes/api/tags');
 
 var app = express();
 
@@ -30,12 +32,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
-app.use('/friendships', friendships);
+
 app.use('/tags', tags);
 app.use('/invites', invites);
 
 // API routes
 app.use('/api/scrapes', api_scrapes);
+app.use('/api/users', api_users);
+app.use('/api/tags', api_tags);
 
 
 // catch 404 and forward to error handler

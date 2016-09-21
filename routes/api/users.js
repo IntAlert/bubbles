@@ -25,11 +25,7 @@ router.get('/all', function(req, res, next) {
 
 router.post('/tag/:userId', function(req, res, next) {
 
-	models.User.findOne({
-		where: {
-			'id': req.params.userId
-		}
-	})
+	models.User.findById(req.params.userId)
   	.then(function(user) {
 
   		if ( !user ) {
