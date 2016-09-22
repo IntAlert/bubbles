@@ -37,4 +37,41 @@ router.get('/:scrapeId', function(req, res, next) {
 
 });
 
+// router.get('/:scrapeId/graph', function(req, res, next) {
+
+//   models.Scrape.findById(req.params.scrapeId, {
+// 	  	include: [{
+// 			model: models.Friendship,
+// 			attributes: ['friend1_id', 'friend2_id']
+// 			include: [{
+				
+// 			}]
+// 		}]
+// 	})
+// 	.then(function(scrape) {
+
+// 		var links = [];
+
+// 		for (var i = scrape.Friendships.length - 1; i >= 0; i--) {
+// 			var friendship = scrape.Friendships[i]
+// 			console.log(friendship)
+// 			links.push({
+// 				source: friendship.friend1_id,
+// 				target: friendship.friend2_id,
+// 				group:1
+// 			})
+// 		}
+
+// 		// respond
+// 		res.json({
+// 			nodes: [],
+// 			// {"name":"Mme.Hucheloup","group":8}
+// 			links: links
+// 			// {"source":1,"target":0,"value":1},
+// 		})
+
+// 	});
+
+// });
+
 module.exports = router;

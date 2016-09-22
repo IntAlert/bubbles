@@ -5,9 +5,10 @@ app.factory('ScrapeService', function($http) {
 	}
 
 	// load all
-	$http.get('/scrapes')
+	$http.get('/api/scrapes/all')
 		.then(function(response){
-			instance.all = response.data.tags
+			instance.all = response.data.scrapes
+			console.log(instance.all)
 		})
 
 	instance.getById = function(id) {

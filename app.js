@@ -12,6 +12,7 @@ var tags = require('./routes/tags');
 var invites = require('./routes/invites');
 
 var api_scrapes = require('./routes/api/scrapes');
+var api_friendships = require('./routes/api/friendships');
 var api_users = require('./routes/api/users');
 var api_tags = require('./routes/api/tags');
 
@@ -38,6 +39,7 @@ app.use('/invites', invites);
 
 // API routes
 app.use('/api/scrapes', api_scrapes);
+app.use('/api/friendships', api_friendships);
 app.use('/api/users', api_users);
 app.use('/api/tags', api_tags);
 

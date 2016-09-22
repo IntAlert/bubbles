@@ -8,6 +8,20 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Friendship.belongsTo(models.Scrape);
+
+        // associate friend 1
+        Friendship.belongsTo(models.User, {
+          as: 'Friend1',
+          foreignKey: 'friend1_id',
+          targetKey: 'fb_id'
+        });
+
+        // associate friend 2
+        Friendship.belongsTo(models.User, {
+          as: 'Friend2',
+          foreignKey: 'friend2_id',
+          targetKey: 'fb_id'
+        });
         
       }
     }

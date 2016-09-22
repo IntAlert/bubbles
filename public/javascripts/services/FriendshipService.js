@@ -1,27 +1,15 @@
-app.factory('FriendshipService', function() {
+app.factory('FriendshipService', function($http) {
 
 	var instance = {}
 
-	instance.getByScrapeId = function(id) {
-		return [
-			{
-				friend1_id:1,
-				friend2_id:2
-			},
-			{
-				friend1_id:2,
-				friend2_id:3
-			},
-			{
-				friend1_id:4,
-				friend2_id:2
-			},
-			{
-				friend1_id:1,
-				friend2_id:4
-			}
-		]
+	instance.getGraphByScrapeId = function(id) {
+		return $http.get('/api/friendships/' + id + '/graph')
+			.then(function(response){
+				console.log(response)
+				return response.data
+			})
 	}
+
 
 	return instance
 
