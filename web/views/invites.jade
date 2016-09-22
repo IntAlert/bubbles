@@ -1,0 +1,35 @@
+extends layout
+
+
+block content
+	div(ng-controller="BubblesInvitesController", flex, layout="column", layout-wrap, layout-padding)
+
+		section
+
+			h2 Users who have not been invited or have not yet joined
+			p.
+				Here is a list of all users who have connected to this app but have <strong>not yet</strong> joined the group.
+
+			div(layout="column")
+				md-card
+					md-card-content 
+						div(flex) User Name
+						div(flex) Go
+				md-card
+					md-card-content User
+
+
+		section
+
+			h2 Users who have been invited
+			p.
+				All of these users have been invited to the group and we are successfully able to view their friendships
+			
+			div(layout="column")
+				md-card
+					md-card-content 
+						div(flex) User Name
+						div(flex) Go
+				md-card
+					md-card-content User
+

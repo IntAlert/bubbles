@@ -1,0 +1,134 @@
+extends layout
+
+
+block content
+	div(ng-controller="BubblesUserController", layout="column")
+
+
+		section(layout="row", flex)
+
+			md-sidenav.md-sidenav-left(
+				md-component-id="left"
+				md-is-locked-open="true"
+				md-whiteframe="4"
+			)
+				md-toolbar.md-theme-indigo
+					h1.md-toolbar-tools Filter Users
+				md-content(layout-padding)
+
+					p Name
+					md-input-container
+						label By name
+						input(ng-model="filter.name")
+
+					p Tag
+					md-radio-group(ng-model="filter.tag")
+						md-radio-button(
+							ng-repeat="tag in tags.all"
+							ng-value="tag"
+							aria-label="{{tag.name}}"
+							) {{tag.name}}
+
+					p Group Membership
+					md-radio-group(ng-model="filter.in_group")
+						md-radio-button(
+							ng-value="true"
+							aria-label="In group"
+							) In group
+						md-radio-button(
+							ng-value="false"
+							aria-label="Not in group"
+							) Not in group
+
+
+			md-content(flex, layout-padding)
+
+				md-list(flex)
+					md-list-item.md-3-line(
+						ng-repeat="user in users.all" ng-click="showUserDetail(user)"
+					)
+						img.md-avatar(
+							alt="{{user.name}}"
+							ng-src="http://graph.facebook.com/{{user.fb_id}}/picture?type=square"
+							)
+						div.md-list-item-text(layout="column")
+							h3 {{ user.displayName }}
+							p
+								span(ng-repeat="tag in user.Tags") {{ tag.name }}{{ $last ? '':', '}}
+
+			md-sidenav.md-sidenav-right.md-whiteframe-4dp(
+				md-component-id="userDetail"
+				)
+
+				md-toolbar.md-theme-light
+					h1.md-toolbar-tools {{userDetail.displayName}}
+
+					md-content(layout-padding)
+						pre {{userDetail}}
+						md-list
+							md-list-item.md-1-line
+								div.md-list-item-text
+									span Facebook gender: {{userDetail.gender || 'n/a'}}
+						ul.tags
+							li(ng-repeat="tag in tags.all")
+								md-checkbox(
+									type="checkbox"
+									checklist-model="userDetail.Tags"
+									checklist-value="tag"
+									checklist-comparator=".id"
+									aria-label="{{tag.name}}"
+									)
+										span {{tag.name}}
+
+						
+						div(layout="column")
+							h3 Add new tag
+							md-input-container
+								label Tag
+								input(ng-model="newTagName")
+						
+							md-button.md-raised.md-primary Add
+
+
+		//- section(layout="row", flex)
+
+		//- 	md-content(
+		//- 		flex
+		//- 		layout-padding
+		//- 		layout-wrap
+		//- 		layout="row"
+		//- 		)
+		//- 		md-card(
+		//- 			ng-repeat="user in users.all"
+		//- 			layout-align="center center"
+		//- 			)
+		//- 			div
+		//- 				img(ng-src="http://graph.facebook.com/{{user.fb_id}}/picture?type=square")
+		//- 			div {{user.displayName}}
+		//- 			div 
+		//- 				md-button(ng-click="showUser(user)") Tag
+
+		//- 	md-sidenav.md-sidenav-right(
+		//- 		md-component-id="right"
+		//- 		md-is-locked-open="true"
+		//- 		md-whiteframe="4"
+		//- 		)
+		//- 		md-content(layout-padding)
+		//- 			ul.tags
+		//- 				li(ng-repeat="tag in tags.all")
+		//- 					md-checkbox(
+		//- 						type="checkbox"
+		//- 						checklist-model="userDetail.Tags"
+		//- 						checklist-value="tag"
+		//- 						checklist-comparator=".id"
+		//- 						aria-label="{{tag.name}}"
+		//- 						)
+		//- 							span {{tag.name}}
+					
+		//- 			h3 Add new tag
+		//- 			div(layout="row")
+		//- 				md-input-container
+		//- 					label Tag
+		//- 					input(ng-model="newTagName")
+		//- 				md-input-container(flex)
+		//- 					md-button.md-raised.md-primary Add
