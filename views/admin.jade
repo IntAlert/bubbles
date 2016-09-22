@@ -31,11 +31,16 @@ block content
 					md-select(ng-model="query.scrape1", aria-label="Scrape Date #1")
 						md-option(ng-repeat="scrape in scrapes.all", ng-value="scrape")
 							{{scrape.updatedAt | date:'dd/MM/yyyy'}}
-				div(ng-include=" '/partials/friendship-graph.tmpl.html' ")
+				//- Graph			
+				div.graph
+					nvd3(options="graphs.d3options", data="graphs.data[0]")
+
 
 			md-content(flex, layout-padding)
 				md-input-container.scrapes(layout="column", layout-align="center center")
 					label Scrape Date #2
 					md-select(ng-model="query.scrape2", aria-label="Scrape Date #2")
 						md-option(ng-repeat="scrape in scrapes.all", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy'}}
-				//- div(ng-include=" '/partials/friendship-graph.tmpl.html' ")
+				//- Graph			
+				div.graph
+					nvd3(options="graphs.d3options", data="graphs.data[1]")

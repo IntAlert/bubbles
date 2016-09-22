@@ -1,4 +1,4 @@
-app.controller('ForceDirectedGraphController', function($scope, FriendshipService){
+app.controller('FriendshipGraphController', function($scope, FriendshipService){
         var color = d3.scale.category20()
         $scope.options = {
             chart: {
@@ -22,7 +22,7 @@ app.controller('ForceDirectedGraphController', function($scope, FriendshipServic
 
 
         FriendshipService.getGraphByScrapeId(1).then(function(graph){
-            // $scope.data = graph
+            $scope.data = graph
             console.log(graph)
         })
 
