@@ -35,3 +35,5 @@ node_modules
 .env
 event.json
 .DS_Store
+lambda-packages/
+shared/

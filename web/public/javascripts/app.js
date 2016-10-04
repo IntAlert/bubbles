@@ -9,6 +9,9 @@ var app = angular
 			'mdColorPicker'
 		]
 	)
-	.config(function($compileProvider, $locationProvider){
-	   
-});
+	.config(function($compileProvider, $locationProvider, $mdThemingProvider){
+	   $mdThemingProvider.theme('customTheme') 
+          .primaryPalette('grey')
+          .accentPalette('orange')
+          .warnPalette('red');
+	})

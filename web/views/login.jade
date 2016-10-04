@@ -3,5 +3,43 @@ extends layout
 
 block content
 	div(ng-controller="BubblesLoginController", flex, layout="column", layout-wrap, layout-padding)
-		md-button.md-raised.md-primary(fb-login,href="/auth/facebook") Login with Facebook
-	p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		dic.container
+			div.logo
+				img(src="/images/logo.png")
+			
+			h1 Social Peace Platform
+
+			div.cta
+				md-button.md-raised.md-primary(fb-login,href="/auth/facebook") Login with Facebook
+			
+
+			div.toc.russian
+				h3 Использование информации, собранные при регистрации
+				p.
+					Если желаете учавствосать в платформе _____________, вам необходимо будет представить следующие информацим аппликацей "Bubbles":
+				ul
+					li Список друзей <strong>(TRANSLATE: who use this application only)</strong>
+					li Список групп
+				p.
+					Аппликация "Bubbles" был разработан для International Alert с целью сбора статистической информации о деятельности на платформе. Личные информации не будут делится с внешними коммерческими структурами, но агрегированная информация будет использоваться в отчетах International Alert.
+
+				p.
+					Если у вас есть какие-то вопросы по поводу данной политики конфиденциальности, или если желаете выйти из аппликация, пожалуйста, сообщите нам об этом. (+ Гиперссылка)
+
+
+			div.toc.english
+				h3 Use of Information Collected Upon Registration  
+				p.
+					If you desire to have access to the Bubbles Platform, you will be required to submit the following information to the &quot;Bubbles&quot; application:
+				ul
+					li List of friends <strong>(who use this application only)</strong>
+					li List of groups
+				p.
+					The application "Bubbles" was developed for International Alert in order to collect statistical information on the exchanges and activities on the Platform. Personal information will not be disclosed with external commercial actors, but aggregated information will be shared with International Alert donors.
+
+				p.
+					If you have any thoughts or questions about this Privacy Policy, or which to withdraw from the application, please let us know. (+hyperlink)
+
+
+

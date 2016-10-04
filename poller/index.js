@@ -1,6 +1,6 @@
 var Q = require('q');
 var fb = require('./lib/facebook');
-var models = require('../shared/models');
+var models = require('./shared/models/');
 
 
 
@@ -13,7 +13,7 @@ var data = {
 }
 
 // For development/testing purposes
-exports.handler = function( event, context ) {
+exports.handler = function( event, context, callback) {
 
 	// models.Tag.findAll()
  //  	.then(function(tags) {
@@ -39,6 +39,7 @@ exports.handler = function( event, context ) {
 	.then(function(){
 		// mark scrape as complete
 		console.log('complete')
+		callback(null, true)
 	})
 
 }

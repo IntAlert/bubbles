@@ -96,47 +96,40 @@ textarea {
    ========================================================================== */
 
 
-/*@import url("styles.css");*/
-.xmas-card-container {
-    position: relative;
+.container {
+    margin:0 auto;
+    max-width:900px;
 }
-.xmas-card-container img {
-    /*position: absolute;
-    z-index:1;
-    top:0;
-    left:0;*/
-    max-width: 100%;
-}
-.xmas-card-container .xmas-card-msg {
-    position: absolute;
-    z-index:2;
-    width:80%;
-    background:#fff;
-    padding:8px;
-    top:20px;
-    left:10%;
+
+.logo {
     text-align: center;
+    margin:0 0 1em;
 }
-.xmas-card-container .selectedCharity {
-    position: absolute;
-    z-index:2;
-    width:80%;
-    background:#fff;
-    padding:8px;
-    top:120px;
-    left:10%;
+
+.cta {
     text-align: center;
+    margin-bottom:5em;
+
 }
 
+h1 {
+    text-align: center;
+    margin-bottom:1em;
+}
 
-.card img {max-width:100%;}
+.toc {
+    margin-bottom:5em;
+}
 
+.toc.russian {
+    float: left;
+    width: 45%;
+}
 
-
-
-
-
-
+.toc.english {
+    float: right;
+    width: 45%;
+}
 
 
 

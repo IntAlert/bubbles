@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var models = require('../../shared/models');
+var models = require('../shared/models');
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -25,6 +25,11 @@ passport.use(new FacebookStrategy({
 			    accessToken: accessToken,
 			    refreshToken: refreshToken
 			}
+		}).
+		then(function(user){
+			if (!user) { return done('User not logged in'); }
+			
+			done(null, user);
 		})
 
   }
@@ -42,8 +47,12 @@ router.get('/facebook', passport.authenticate('facebook', { scope: 'user_friends
 // authentication has failed.
 router.get('/facebook/callback',
   passport.authenticate('facebook', { 
-  	failureRedirect: '/', successCallback: '/' 
+  	failureRedirect: '/auth/failure', successRedirect: '/' 
   })
 );
+
+router.get('/facebook/failure', function(req, res, next) {
+  res.render('auth/failure');
+});
 
 module.exports = router;
