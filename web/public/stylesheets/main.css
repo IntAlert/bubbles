@@ -99,6 +99,7 @@ textarea {
 .container {
     margin:0 auto;
     max-width:900px;
+    text-align: center;
 }
 
 .logo {
@@ -119,6 +120,7 @@ h1 {
 
 .toc {
     margin-bottom:5em;
+    text-align: left;
 }
 
 .toc.russian {

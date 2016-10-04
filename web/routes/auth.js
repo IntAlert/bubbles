@@ -3,13 +3,14 @@ var router = express.Router();
 var models = require('../shared/models');
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
+const url = require('url');
 
 
 // configure facebook
 passport.use(new FacebookStrategy({
     clientID: 533560176843182,
     clientSecret: '687fba6879bf346e6463417d43631751',
-    callbackURL: "http://bubbles.international-alert.org/auth/facebook/callback"
+    callbackURL: process.env.FB_CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
 
@@ -47,12 +48,16 @@ router.get('/facebook', passport.authenticate('facebook', { scope: 'user_friends
 // authentication has failed.
 router.get('/facebook/callback',
   passport.authenticate('facebook', { 
-  	failureRedirect: '/auth/failure', successRedirect: '/' 
+  	failureRedirect: '/auth/failure', successRedirect: '/auth/facebook/success' 
   })
 );
 
 router.get('/facebook/failure', function(req, res, next) {
   res.render('auth/failure');
+});
+
+router.get('/facebook/success', function(req, res, next) {
+  res.render('auth/success');
 });
 
 module.exports = router;

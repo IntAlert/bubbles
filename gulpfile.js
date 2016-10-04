@@ -8,7 +8,7 @@ var concat = require('gulp-concat'),
 
 gulp.task('watch', function () {
     // Endless stream mode 
-    return gulp.watch('./shared', { 
+    return gulp.watch('./shared/**', { 
         ignoreInitial: false
     }, [
         'shared'
