@@ -13,6 +13,26 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// D3 Graphs
 	$scope.graphs = {
 		d3options: null,

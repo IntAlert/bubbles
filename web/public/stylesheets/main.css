@@ -134,6 +134,27 @@ h1 {
 }
 
 
+/*Admin*/
+
+.graph {margin:0 auto; min-height:500px;}
+.tags {
+
+}
+.tags .controls {
+    max-height:200px;
+}
+
+.tags .controls .selected {
+    background-color:#eee;
+    color:#666;
+}
+
+.tags .summary {
+    padding:12px;
+}
+
+
+
 
 
 /* ==========================================================================
