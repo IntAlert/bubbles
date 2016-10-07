@@ -1,0 +1,11 @@
+branch-defaults:
+  master:
+    environment: staging
+    group_suffix: null
+global:
+  application_name: buble
+  default_ec2_keyname: null
+  default_platform: Node.js
+  default_region: eu-west-1
+  profile: null
+  sc: git
