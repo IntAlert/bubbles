@@ -30,7 +30,7 @@ block content
 					label Scrape Date #1
 					md-select(ng-model="query.scrape1", aria-label="Scrape Date #1")
 						md-option(ng-repeat="scrape in scrapes.all", ng-value="scrape")
-							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm:ss'}}
+							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
 				//- Graph			
 				div.graph
 					nvd3(options="graphs.d3options", data="graphs.data[0]")
@@ -50,7 +50,7 @@ block content
 				md-input-container.scrapes(layout="column", layout-align="center center")
 					label Scrape Date #2
 					md-select(ng-model="query.scrape2", aria-label="Scrape Date #2")
-						md-option(ng-repeat="scrape in scrapes.all", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy HH:mm:ss'}}
+						md-option(ng-repeat="scrape in scrapes.all", ng-value="scrape") {{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
 				//- Graph			
 				div.graph
 					nvd3(options="graphs.d3options", data="graphs.data[1]")
