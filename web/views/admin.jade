@@ -35,15 +35,13 @@ block content
 				div.graph
 					nvd3(options="graphs.d3options", data="graphs.data[0]")
 
-				div.tags(ng-controller="TagSelectorController")
-					div.summary
-						span Showing all tags
-					div.controls
-						md-button.md-raised.md-primary(
-							ng-repeat="tag in availableTags"
-							ng-click="toggleTag(tag)"
-							ng-class=" isSelected(tag) ? 'selected': '' "
-						) {{tag.name}}
+				div.tags
+					div( 
+						tag-selector
+						available-tags="tags.all",
+						selected-tags="scrape1Tags"
+					)
+				p {{scrape1Tags}}
 
 
 			md-content(flex, layout-padding)

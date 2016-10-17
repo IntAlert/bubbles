@@ -11,6 +11,10 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 		scrape2: null
 	}
 
+	// Tags
+	$scope.scrape1Tags = []
+	$scope.scrape2Tags = []
+
 
 
 

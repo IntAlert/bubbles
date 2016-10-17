@@ -1,21 +1,15 @@
-div.tag-selector
-	div.summary
+div.tag-selector(ng-show="availableTags.length > 0")
+	div.tag-selector-summary
 		span Selected Tags: 
-		span(ng-show="allTags") All
-		span(ng-hide="allTags || selectedTags.length") None
+		span(ng-show="availableTags.length == selectedTags.length") All
+		span(ng-hide="selectedTags.length") None
 		span(
-			ng-hide="allTags"
+			ng-hide="availableTags.length == selectedTags.length"
 			ng-repeat="selectedTag in selectedTags"
 		) {{selectedTag.name}}{{$last ? '':', '}}
-	div.tags
-		
-		md-checkbox(
-			ng-model="allTags"
-			ng-change="toggleAllTags()"
-		) Show All tags
+	div.tag-selector-tags
 
 		md-button.md-raised.md-primary(
-			ng-disabled="allTags"
 			ng-repeat="tag in availableTags"
 			ng-click="toggle(tag)"
 			ng-class=" isSelected(tag) ? 'selected': '' "

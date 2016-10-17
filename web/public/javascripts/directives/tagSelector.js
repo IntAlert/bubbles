@@ -6,7 +6,6 @@ app.directive('tagSelector', function() {
     	selectedTags: '='
     },
     controller: function($scope) {
-    	$scope.allTags = true;
 
     	// check we have two arrays
     	if (!Array.isArray($scope.availableTags)) {
@@ -15,65 +14,45 @@ app.directive('tagSelector', function() {
     	}
 
     	// by default we select all tags
-    	$scope.selectedTags = angular.copy($scope.availableTags)
-    },
-    link: function(scope, el, attrs) {
+    	// NB. Once the tags are loaded
+    	$scope.selectedTags = angular.copy($scope.availableTags);
+    	$scope.$watch('availableTags', function(newValue, oldValue){
+    		if (oldValue.length == 0) {
+	    		$scope.selectedTags = angular.copy($scope.availableTags);
+    		}
+    	})
 
 		// Public
-		scope.isSelected = function(tag){
+		$scope.isSelected = function(tag){
 			return isSelected(tag)
 		}
 
-		scope.toggle = function(tag) {
+		$scope.toggle = function(tag) {
 			toggleTag(tag);
 		}
 
-		scope.toggleAllTags = function() {
-			if(scope.allTags) {
-				scope.selectedTags = angular.copy(scope.availableTags)
-			} else {
-				scope.selectedTags = recallPreviousSelection()
-			}
-		}
-
 		// Private 
-		var rememberedSelectedTags = [];;
-
 		var isSelected = function(tag) {
-			if(scope.allTags) return true
-			else return (-1 != scope.selectedTags.map(function(e) { return e.id; }).indexOf(tag.id))
+			return (-1 != getSelectedTagPosition(tag))
 		}
 
 		var toggleTag = function(tag){
 
 			// does tag already exist?
-			var pos = scope.selectedTags.map(function(e) { return e.id; }).indexOf(tag.id);
+			var pos = getSelectedTagPosition(tag);
 
 			if (pos == - 1)  {
-
-				// will this mean all tags selected?
-				if(scope.selectedTags.length == scope.availableTags.length - 1) {
-					// all are selected
-					scope.allTags = true;
-
-					// remember selection before
-					rememberPreviousSelection()
-				}
-
-				scope.selectedTags.push(tag)
+				$scope.selectedTags.push(tag)
 			} else {
-				scope.selectedTags.splice(pos)
+				$scope.selectedTags.splice(pos, 1)
 			}
 
-
 		}
 
-		var rememberPreviousSelection = function() {
-			rememberedSelectedTags = angular.copy(scope.selectedTags)
-		}
-
-		var recallPreviousSelection = function() {
-			return angular.copy(rememberedSelectedTags)
+		var getSelectedTagPosition = function(tag) {
+			var pos = $scope.selectedTags.map(function(e) { return e.id; }).indexOf(tag.id);
+			
+			return pos;
 		}
 
     }

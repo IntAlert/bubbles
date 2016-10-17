@@ -1,4 +1,13 @@
-.tag-selector .selected {
-
-	background-color: red !important;
+.tag-selector button {
+	background-color: #ddd !important;
+}
+.tag-selector button.selected span {
+	color:#000;
+}
+.tag-selector button.selected {
+	background-color: rgb(57,73,171) !important;
+	
+}
+.tag-selector button.selected span {
+	color:#fff;
 }
