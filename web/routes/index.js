@@ -12,4 +12,10 @@ router.get('/admin', function(req, res, next) {
 });
 
 
+router.get('/tagSelector', function(req, res, next) {
+  res.render('tagSelector');
+});
+
+
+
 module.exports = router;

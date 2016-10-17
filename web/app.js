@@ -57,6 +57,11 @@ app.use('/api/friendships', api_friendships);
 app.use('/api/users', api_users);
 app.use('/api/tags', api_tags);
 
+// Jade Partials for directives
+app.get('/partials/directives/:name', function (req, res) { 
+  var name = req.params.name;
+  res.render('partials/directives/' + name);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

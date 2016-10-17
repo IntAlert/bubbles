@@ -1,0 +1,19 @@
+div.tag-selector
+	div.summary
+		span Showing all tags
+	div.have
+		h3 Have
+		md-button.md-raised.md-primary(
+			ng-repeat="tag in availableTags"
+			ng-click="toggleHas(tag)"
+			ng-class=" isSelectedHas(tag) ? 'selected': '' "
+		) {{tag.name}}
+
+
+	div.haveNot
+		h3 Have Not
+		md-button.md-raised.md-primary(
+			ng-repeat="tag in availableTags"
+			ng-click="toggleHasNot(tag)"
+			ng-class=" isSelectedHasNot(tag) ? 'selected': '' "
+		) {{tag.name}}

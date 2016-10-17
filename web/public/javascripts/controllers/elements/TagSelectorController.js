@@ -1,9 +1,11 @@
-app.controller('TagSelectorController', function ($scope, $window, $location, $anchorScroll, TagService, FriendshipService, ScrapeService) {
+
+app.controller('TagSelectorController', function ($scope, ScrapeService) {
 
 
 
 	// Tag Selector
-	var selectedTags = [];
+	$scope.haveTags = [];
+	$scope.haveNotTags = [];
 	$scope.availableTags = [{
 		"id": 1,
 		"name": "One"
@@ -11,22 +13,36 @@ app.controller('TagSelectorController', function ($scope, $window, $location, $a
 		"id": 2,
 		"name": "Two"
 	}];
+	// $scope.availableTags = TagService.all
 
 
-	$scope.isSelected = function(tag) {
-		return -1 != selectedTags.map(function(e) { return e.id; }).indexOf(tag.id);
-	}
+
+	$scope.scrapes = ScrapeService.all;
+	var stepArray = []
+
+	$scope.$watch('scrapes', function(){
+
+		console.log(ScrapeService.all)
+		stepArray = ScrapeService.all.map(function(scrape){
+			return {
+				value: scrape.id,
+				legend: scrape.createdAt
+			}
+		})
+	})
 
 
-	$scope.toggleTag = function(tag){
 
-		// does tag already exist?
-		var pos = selectedTags.map(function(e) { return e.id; }).indexOf(tag.id);
 
-		if (pos == - 1)  {
-			selectedTags.push(tag)
-		} else {
-			selectedTags.splice(pos)
+
+
+
+	$scope.slider = {
+		value: {
+
+		},
+		options: {
+			stepArray: stepArray
 		}
 	}
 
