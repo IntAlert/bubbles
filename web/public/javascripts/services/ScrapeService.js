@@ -8,7 +8,7 @@ app.factory('ScrapeService', function($http) {
 	$http.get('/api/scrapes/all')
 		.then(function(response){
 			instance.all = response.data.scrapes
-			console.log(instance.all)
+			// console.log(instance.all)
 		})
 
 	instance.getById = function(id) {

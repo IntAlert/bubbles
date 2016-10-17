@@ -4,8 +4,7 @@ app.controller('TagSelectorController', function ($scope, ScrapeService) {
 
 
 	// Tag Selector
-	$scope.haveTags = [];
-	$scope.haveNotTags = [];
+	$scope.selectedTags = [];
 	$scope.availableTags = [{
 		"id": 1,
 		"name": "One"
@@ -22,7 +21,7 @@ app.controller('TagSelectorController', function ($scope, ScrapeService) {
 
 	$scope.$watch('scrapes', function(){
 
-		console.log(ScrapeService.all)
+		// console.log(ScrapeService.all)
 		stepArray = ScrapeService.all.map(function(scrape){
 			return {
 				value: scrape.id,
