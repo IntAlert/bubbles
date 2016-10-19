@@ -26,22 +26,33 @@ block content
 					//- pre {{ query | json }}
 
 			md-content(flex, layout-padding)
-				md-input-container.scrapes(layout="column", layout-align="center center")
+				md-input-container.scrapes(
+					layout="column"
+					layout-align="center center"
+				)
 					label Scrape Date #1
-					md-select(ng-model="query.scrape1", aria-label="Scrape Date #1")
-						md-option(ng-repeat="scrape in scrapes.all", ng-value="scrape")
+					md-select(
+						ng-model="query.scrape1"
+						aria-label="Scrape Date #1"
+					)
+						md-option(
+							ng-repeat="scrape in scrapes.all"
+							ng-value="scrape"
+						).
 							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
 				//- Graph			
 				div.graph
-					nvd3(options="graphs.d3options", data="graphs.data[0]")
+					nvd3(
+						options="graphs.d3options"
+						data="graphs.data[0]"
+						api="api"
+					)
 
 				div.tags
-					div( 
-						tag-selector
+					tag-selector( 
 						available-tags="tags.all",
 						selected-tags="scrape1Tags"
 					)
-				p {{scrape1Tags}}
 
 
 			md-content(flex, layout-padding)

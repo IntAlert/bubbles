@@ -15,10 +15,15 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 	$scope.scrape1Tags = []
 	$scope.scrape2Tags = []
 
+	$scope.api = null;
 
 
 
 
+	$scope.$watch('scrapes.all', function(){
+		$scope.query.scrape1 = $scope.scrapes.all[0]
+		$scope.query.scrape2 = $scope.scrapes.all[$scope.scrapes.all.length - 1]
+	})
 
 
 
@@ -52,21 +57,37 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
             color: function(d){
                 return color(d.group)
             },
-            linkDist: 100,
+            charge: -1000,
+            linkDist: 120,
             linkExtras: function(links) {
+            	
+            	links[0].forEach(function(link){
 
+            		if (link.__data__.source.filteredOutByTag || link.__data__.target.filteredOutByTag) {
+            			link.style.opacity = 0	
+            		} else {
+            			link.style.opacity = 1
+            		}
+            		
+            	})
             },
             nodeExtras: function(node) {
             	
-                node && node
+            	node.style('opacity', function(d){
+            		if(d.filteredOutByTag) return '0.2';
+            		else return '1';
+            	})
+            	
+
+                node
                   .append("text")
 	                  .attr("dx", 8)
 	                  .attr("dy", ".35em")
 	                  .text(function(d) { return d.name })
-                  .style('font-size', '10px');
+                  .style('font-size', '17px');
 
 
-                 // Append images
+				// Append images
 				node.append("svg:g")
 			      .attr("class", "node")
 			      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
@@ -77,7 +98,7 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 			      .style("fill", "#eee");
 			 
 			   
-			  // Append images
+			  // Append profile image
 				node.append("svg:image")
 			        .attr("xlink:href",  function(d) { 
 			        	var profile_url = "http://graph.facebook.com/" + d.fb_id + "/picture?type=square"
@@ -92,6 +113,10 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
     };
 
 
+    $scope.$watch('scrape1Tags', function(){
+    	if ($scope.query.scrape1)
+	    	$scope.graphs.data[0] = filterGraphByTag($scope.graphs.data[0], $scope.scrape1Tags)
+    }, true)
 
     
 
@@ -104,9 +129,12 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 	$scope.$watch('query.scrape1', function(){
 		if ($scope.query.scrape1) {
 			FriendshipService.getGraphByScrapeId($scope.query.scrape1.id).then(function(graphData){
-		        $scope.graphs.data[0] = graphData
+		        // $scope.graphs.data[0] = graphData
+		        $scope.api.updateWithData(graphData)
 		    })	
 		}
+
+		console.log($scope.api)
 	})
 
 	$scope.$watch('query.scrape2', function(){
@@ -116,5 +144,38 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 		    })	
 		}
 	})
+
+
+	var filterGraphByTag = function(graphData, selectedTags) {
+
+		angular.forEach(graphData.nodes, function(node) {
+
+			// does the node contains any of the selected
+			
+			var selectedTagIds = selectedTags.map(function(e) { return e.id; })
+			var nodeTagIds = node.Tags.map(function(e) { return e.id; })
+			var intersection = selectedTagIds.filter(function(n) {
+			    return nodeTagIds.indexOf(n) != -1;
+			})
+
+			console.log(selectedTagIds)
+
+			var hasAtleastOneTag = intersection.length > 0
+
+			node.filteredOutByTag = !hasAtleastOneTag
+
+		});
+
+		return graphData
+
+	}
+
+
+
+
+
+
+
+
 
 })
