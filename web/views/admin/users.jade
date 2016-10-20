@@ -18,10 +18,10 @@ block content
 					p Name
 					md-input-container
 						label By name
-						input(ng-model="filter.name")
+						input(ng-model="query.displayName")
 
 					p Tag
-					md-radio-group(ng-model="filter.tag")
+					md-radio-group(ng-model="query.tag")
 						md-radio-button(
 							ng-repeat="tag in tags.all"
 							ng-value="tag"
@@ -29,7 +29,7 @@ block content
 							) {{tag.name}}
 
 					p Group Membership
-					md-radio-group(ng-model="filter.in_group")
+					md-radio-group(ng-model="query.in_group")
 						md-radio-button(
 							ng-value="true"
 							aria-label="In group"
@@ -44,7 +44,8 @@ block content
 
 				md-list(flex)
 					md-list-item.md-3-line(
-						ng-repeat="user in users.all" ng-click="showUserDetail(user)"
+						ng-repeat="user in users.all | filter:filterUser(user)" 
+						ng-click="showUserDetail(user)"
 					)
 						img.md-avatar(
 							alt="{{user.name}}"

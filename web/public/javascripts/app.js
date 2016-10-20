@@ -18,4 +18,4 @@ var app = angular
           .primaryPalette('grey')
           .accentPalette('orange')
           .warnPalette('red');
-	})
+	});

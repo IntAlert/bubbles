@@ -8,6 +8,36 @@ app.controller('UsersController', function ($scope, $window, $location, $anchorS
 	$scope.userDetail = {}
 
 
+	// USER LISTING
+	$scope.query = {}
+
+	var filterUsers = function() {
+
+		var usersFiltered = angular.copy($scope.users.all)
+
+
+
+
+		return usersFiltered
+	}
+
+	$scope.filterUser = function(user) {
+		return function(user) {
+
+			if($scope.query.displayName && user.displayName.toLowerCase().indexOf($scope.query.displayName.toLowerCase()) == -1) {
+				return false
+			}
+
+			return true;
+		};
+	}
+
+
+
+
+
+	// USER EDITING
+
 	$scope.showUserDetail = function(user) {
 		
 		var userDetailSideNav = $mdSidenav('userDetail');
