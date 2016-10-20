@@ -1,0 +1,47 @@
+extends ../layouts/admin
+
+
+block content
+	div(ng-controller="TagsController", layout="column")
+
+		section(layout="row", flex)
+
+			md-content(flex, layout-padding, layout="row")
+
+				md-list(flex)
+					md-list-item(
+						ng-repeat="tag in tags.all"
+						)
+						p {{tag.name}}
+						md-icon.md-secondary(
+							ng-click="deleteTag($event, tag)"
+							class="material-icons step"
+							aria-label="Delete"
+						) Delete
+					md-list-item(ng-click="showCreateTagForm()")
+						p Create new tag
+
+			md-sidenav.md-sidenav-right.md-whiteframe-4dp(
+				md-component-id="createTagForm"
+				)
+
+				md-toolbar.md-theme-light
+					h1.md-toolbar-tools Create New Tag
+
+					md-content(layout-padding)
+						
+						div.form(flex, name="newTagForm")
+							md-input-container
+								label Tag name
+								input(
+									required
+									md-minlength="2"
+									name="newTag"
+									ng-model='newTagName'
+								)
+
+							md-button.md-primary.md-raised(
+								ng-click="createNewTag()"
+								ng-disabled="newTagForm.$invalid"
+								type="submit"
+							) Create tag

@@ -1,0 +1,108 @@
+doctype html
+//if lt IE 7
+  <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+//if IE 7
+  <html class="no-js lt-ie9 lt-ie8">
+//if IE 8
+  <html class="no-js lt-ie9">
+//[if gt IE 8]><!
+html(class='no-js')
+  //<![endif]
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+    title
+
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+
+    
+
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/components/angular-material/angular-material.min.css')
+
+
+    //- Custom Directives
+    link(rel='stylesheet', href='/stylesheets/directives/tagSelector.css')
+
+
+    link(rel='stylesheet', href='components/md-color-picker/dist/mdColorPicker.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='/components/nvd3/build/nv.d3.css')
+    link(rel='stylesheet', href='/components/material-design-icons/iconfont/material-icons.css')
+
+
+    script(src='/javascripts/vendor/modernizr-2.8.3.min.js')
+
+  body(ng-app="Bubbles", ng-cloak)
+    //if lt IE 7
+      p.browsehappy You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+
+
+    div.nav.clearfix
+      h1 Bubbles Admin
+      ul.clearfix
+        li
+          a(href='/admin/compare') Graph Compare
+        li
+          a(href='/admin/users') Users
+        li
+          a(href='/admin/tags') Tags
+
+
+    block content
+
+    //-libraries
+    script(src='/components/angular/angular.js')
+    script(src='/components/angular-animate/angular-animate.js')
+    script(src='/components/angular-messages/angular-messages.js')
+    script(src='/components/angular-material/angular-material.js')
+    script(src='/components/angular-aria/angular-aria.js')
+    script(src='/components/angular-input-masks/angular-input-masks-standalone.js')
+    script(src='/components/tinycolor/tinycolor.js')
+    script(src='/components/md-color-picker/dist/mdColorPicker.js')
+      
+
+    //- D3
+    script(src='/components/d3/d3.js')
+    script(src='/components/nvd3/build/nv.d3.js')
+    script(src='/components/angular-nvd3/dist/angular-nvd3.js')
+
+
+    script(src='/javascripts/app.js')
+
+
+    //- Services
+    script(src="/javascripts/services/FriendshipService.js")
+    script(src="/javascripts/services/TagService.js")
+    script(src="/javascripts/services/ScrapeService.js")
+    script(src="/javascripts/services/UserService.js")
+    script(src="/javascripts/services/D3GraphOptionsService.js")
+
+    //- controllers
+    script(src="/javascripts/controllers/BubblesLoginController.js")
+    script(src="/javascripts/controllers/BubblesAdminController.js")
+    script(src="/javascripts/controllers/UsersController.js")
+    script(src="/javascripts/controllers/BubblesInvitesController.js")
+    script(src="/javascripts/controllers/TagsController.js")
+    script(src="/javascripts/controllers/ForceDirectedGraphController.js")
+    script(src="/javascripts/controllers/elements/ScrapeSelectorController.js")
+
+    //- Directives
+    script(src="/components/checklist-model/checklist-model.js")
+    script(src="/components/angularjs-slider/src/rzslider.js")
+
+    //- Custom Directives
+    script(src="/javascripts/directives/tagSelector.js")
+
+
+
+    script.
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');

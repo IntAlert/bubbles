@@ -21,7 +21,8 @@ router.get('/all', function(req, res, next) {
 // Overwrite all user tags according to POST tagIds
 router.post('/user/:userId', function(req, res, next) {
 
-	models.User.findById(req.params.userId)
+	models.User
+	.findById(req.params.userId)
   	.then(function(user) {
 
   		// check user exists
@@ -70,18 +71,14 @@ router.post('/', function(req, res, next) {
 				name: tagName
 			}
 		})
+
 		.spread(function(tag, created) {
 
-			// return a list of all tags
-			models.Tag.findAll()
-			  	.then(function(tags) {
+			// respond with tag
+			res.json({
+				tag: tag
+			})
 
-					// respond
-					res.json({
-						newTag: tag,
-						tags:tags
-					})
-				});
 		})
 })
 

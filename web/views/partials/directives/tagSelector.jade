@@ -1,4 +1,13 @@
 div.tag-selector(ng-show="availableTags.length > 0")
+	
+	div.tag-selector-tags
+
+		md-button.md-raised.md-primary(
+			ng-repeat="tag in availableTags"
+			ng-click="toggle(tag)"
+			ng-class=" isSelected(tag) ? 'selected': '' "
+		) {{tag.name}}
+
 	div.tag-selector-summary
 		span Selected Tags: 
 		span(ng-show="availableTags.length == selectedTags.length") All
@@ -7,10 +16,3 @@ div.tag-selector(ng-show="availableTags.length > 0")
 			ng-hide="availableTags.length == selectedTags.length"
 			ng-repeat="selectedTag in selectedTags"
 		) {{selectedTag.name}}{{$last ? '':', '}}
-	div.tag-selector-tags
-
-		md-button.md-raised.md-primary(
-			ng-repeat="tag in availableTags"
-			ng-click="toggle(tag)"
-			ng-class=" isSelected(tag) ? 'selected': '' "
-		) {{tag.name}}

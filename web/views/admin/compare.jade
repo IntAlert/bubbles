@@ -1,13 +1,19 @@
-extends layout
+extends ../layouts/admin
 
 
 block content
-	div(ng-controller="BubblesAdminController", flex, layout="column", layout-wrap, layout-padding)
+	div.compare(
+		ng-controller="BubblesAdminController"
+		flex
+		layout="column"
+		layout-wrap
+		layout-padding
+		)
 
 		section(layout="row", flex)
 
 			md-content(flex, layout-padding)
-				md-input-container.scrapes(
+				md-input-container.scrapes.md-block(
 					layout="column"
 					layout-align="center center"
 				)
@@ -20,7 +26,10 @@ block content
 							ng-repeat="scrape in scrapes.all"
 							ng-value="scrape"
 						).
+							{{$first ? 'First Snapshot: ':''}}
+							{{$last ? 'Most Recent Snapshot: ':''}}
 							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
+							
 				//- Graph			
 				div.graph
 					nvd3(
@@ -36,7 +45,8 @@ block content
 					)
 
 			md-content(flex, layout-padding)
-				md-input-container.scrapes(
+				md-input-container.scrapes.md-block(
+
 					layout="column"
 					layout-align="center center"
 				)
@@ -49,6 +59,8 @@ block content
 							ng-repeat="scrape in scrapes.all"
 							ng-value="scrape"
 						).
+							{{$first ? 'First Snapshot: ':''}}
+							{{$last ? 'Most Recent Snapshot: ':''}}
 							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
 				//- Graph			
 				div.graph

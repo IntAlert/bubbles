@@ -1,9 +1,8 @@
-extends layout
+extends ../layouts/admin
 
 
 block content
-	div(ng-controller="BubblesUserController", layout="column")
-
+	div(ng-controller="UsersController", layout="column")
 
 		section(layout="row", flex)
 
@@ -64,21 +63,14 @@ block content
 					h1.md-toolbar-tools {{userDetail.displayName}}
 
 					md-content(layout-padding)
-						pre {{userDetail}}
 						md-list
 							md-list-item.md-1-line
 								div.md-list-item-text
 									span Facebook gender: {{userDetail.gender || 'n/a'}}
-						ul.tags
-							li(ng-repeat="tag in tags.all")
-								md-checkbox(
-									type="checkbox"
-									checklist-model="userDetail.Tags"
-									checklist-value="tag"
-									checklist-comparator=".id"
-									aria-label="{{tag.name}}"
-									)
-										span {{tag.name}}
+						tag-selector( 
+							available-tags="tags.all",
+							selected-tags="userDetail.Tags"
+						)
 
 						
 						div(layout="column")
@@ -87,48 +79,4 @@ block content
 								label Tag
 								input(ng-model="newTagName")
 						
-							md-button.md-raised.md-primary Add
-
-
-		//- section(layout="row", flex)
-
-		//- 	md-content(
-		//- 		flex
-		//- 		layout-padding
-		//- 		layout-wrap
-		//- 		layout="row"
-		//- 		)
-		//- 		md-card(
-		//- 			ng-repeat="user in users.all"
-		//- 			layout-align="center center"
-		//- 			)
-		//- 			div
-		//- 				img(ng-src="http://graph.facebook.com/{{user.fb_id}}/picture?type=square")
-		//- 			div {{user.displayName}}
-		//- 			div 
-		//- 				md-button(ng-click="showUser(user)") Tag
-
-		//- 	md-sidenav.md-sidenav-right(
-		//- 		md-component-id="right"
-		//- 		md-is-locked-open="true"
-		//- 		md-whiteframe="4"
-		//- 		)
-		//- 		md-content(layout-padding)
-		//- 			ul.tags
-		//- 				li(ng-repeat="tag in tags.all")
-		//- 					md-checkbox(
-		//- 						type="checkbox"
-		//- 						checklist-model="userDetail.Tags"
-		//- 						checklist-value="tag"
-		//- 						checklist-comparator=".id"
-		//- 						aria-label="{{tag.name}}"
-		//- 						)
-		//- 							span {{tag.name}}
-					
-		//- 			h3 Add new tag
-		//- 			div(layout="row")
-		//- 				md-input-container
-		//- 					label Tag
-		//- 					input(ng-model="newTagName")
-		//- 				md-input-container(flex)
-		//- 					md-button.md-raised.md-primary Add
+							md-button.md-raised.md-primary(ng-click="createNewTag()") Add

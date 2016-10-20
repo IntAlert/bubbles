@@ -8,10 +8,11 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+// var users = require('./routes/users');
 var auth = require('./routes/auth');
-var tags = require('./routes/tags');
+// var tags = require('./routes/tags');
 var invites = require('./routes/invites');
+var admin = require('./routes/admin');
 
 var api_scrapes = require('./routes/api/scrapes');
 var api_friendships = require('./routes/api/friendships');
@@ -45,10 +46,12 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/admin', admin);
+
+// app.use('/users', users);
 app.use('/auth', auth);
 
-app.use('/tags', tags);
+// app.use('/tags', tags);
 app.use('/invites', invites);
 
 // API routes
