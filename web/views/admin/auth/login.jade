@@ -1,0 +1,24 @@
+extends ../../layouts/admin
+
+
+block content
+	div(
+		ng-controller="AdminLoginController"
+		flex
+		layout="column"
+		layout-wrap
+		layout-padding
+	)
+
+		div.container
+			div.logo
+				img(src="/images/logo.png")
+			
+			h1 YOUTH PLATFORM
+
+			div.cta
+				md-button.md-raised.md-primary(
+					fb-login
+					href="/admin/auth/facebook"
+				) Login with Facebook as ADMIN
+			

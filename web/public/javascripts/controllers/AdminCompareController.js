@@ -1,4 +1,4 @@
-app.controller('BubblesAdminController', function ($scope, $window, $location, $anchorScroll, TagService, FriendshipService, ScrapeService, D3GraphOptionsService) {
+app.controller('AdminCompareController', function ($scope, $window, $location, $anchorScroll, TagService, FriendshipService, ScrapeService, D3GraphOptionsService) {
 
 	$scope.ready = false;
 

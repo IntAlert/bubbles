@@ -25,17 +25,13 @@ html(class='no-js')
 
 
     //- Custom Directives
-    link(rel='stylesheet', href='/stylesheets/directives/tagSelector.css')
 
-
-    link(rel='stylesheet', href='components/md-color-picker/dist/mdColorPicker.css')
     link(rel='stylesheet', href='/stylesheets/main.css')
-    link(rel='stylesheet', href='/components/nvd3/build/nv.d3.css')
 
 
     script(src='/javascripts/vendor/modernizr-2.8.3.min.js')
 
-  body(ng-app="Bubbles", ng-cloak)
+  body(ng-app="BubblesPublic", ng-cloak)
     //if lt IE 7
       p.browsehappy You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
 
@@ -47,41 +43,18 @@ html(class='no-js')
     script(src='/components/angular-messages/angular-messages.js')
     script(src='/components/angular-material/angular-material.js')
     script(src='/components/angular-aria/angular-aria.js')
-    script(src='/components/angular-input-masks/angular-input-masks-standalone.js')
-    script(src='/components/tinycolor/tinycolor.js')
-    script(src='/components/md-color-picker/dist/mdColorPicker.js')
       
 
-    //- D3
-    script(src='/components/d3/d3.js')
-    script(src='/components/nvd3/build/nv.d3.js')
-    script(src='/components/angular-nvd3/dist/angular-nvd3.js')
-
-
-    script(src='/javascripts/app.js')
-
+    script(src='/javascripts/apps/public.js')
 
     //- Services
-    script(src="/javascripts/services/FriendshipService.js")
-    script(src="/javascripts/services/TagService.js")
-    script(src="/javascripts/services/ScrapeService.js")
-    script(src="/javascripts/services/UserService.js")
-    script(src="/javascripts/services/D3GraphOptionsService.js")
 
     //- controllers
-    script(src="/javascripts/controllers/BubblesLoginController.js")
-    script(src="/javascripts/controllers/BubblesAdminController.js")
-    script(src="/javascripts/controllers/UsersController.js")
-    script(src="/javascripts/controllers/BubblesInvitesController.js")
-    script(src="/javascripts/controllers/ForceDirectedGraphController.js")
-    script(src="/javascripts/controllers/elements/ScrapeSelectorController.js")
+    script(src="/javascripts/controllers/PublicLoginController.js")
 
     //- Directives
-    script(src="/components/checklist-model/checklist-model.js")
-    script(src="/components/angularjs-slider/src/rzslider.js")
 
     //- Custom Directives
-    script(src="/javascripts/directives/tagSelector.js")
 
 
 

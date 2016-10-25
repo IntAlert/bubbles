@@ -7,13 +7,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
-var routes = require('./routes/index');
-// var users = require('./routes/users');
-var auth = require('./routes/auth');
-// var tags = require('./routes/tags');
-var invites = require('./routes/invites');
-var admin = require('./routes/admin');
 
+
+// Public
+var public_index = require('./routes/public/index');
+var public_auth = require('./routes/public/auth');
+
+// Admin
+var admin_index = require('./routes/admin/index');
+var admin_auth = require('./routes/admin/auth');
+
+// API
 var api_scrapes = require('./routes/api/scrapes');
 var api_friendships = require('./routes/api/friendships');
 var api_users = require('./routes/api/users');
@@ -45,14 +49,13 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-app.use('/', routes);
-app.use('/admin', admin);
+// PUBLIC routes
+app.use('/', public_index);
+app.use('/public/auth', public_auth);
 
-// app.use('/users', users);
-app.use('/auth', auth);
-
-// app.use('/tags', tags);
-app.use('/invites', invites);
+// ADMIN routes
+app.use('/admin', admin_index);
+app.use('/admin/auth', admin_auth);
 
 // API routes
 app.use('/api/scrapes', api_scrapes);

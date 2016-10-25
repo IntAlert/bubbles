@@ -10,7 +10,7 @@ const url = require('url');
 passport.use(new FacebookStrategy({
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_CLIENT_SECRET,
-    callbackURL: process.env.FB_CALLBACK_URL
+    callbackURL: process.env.FB_CALLBACK_URL_PUBLIC
   },
   function(accessToken, refreshToken, profile, done) {
 
@@ -50,16 +50,16 @@ router.get('/facebook', passport.authenticate('facebook', { scope: 'user_friends
 // authentication has failed.
 router.get('/facebook/callback',
   passport.authenticate('facebook', { 
-  	failureRedirect: '/auth/failure', successRedirect: '/auth/facebook/success' 
+  	failureRedirect: '/public/auth/failure', successRedirect: '/public/auth/facebook/success' 
   })
 );
 
 router.get('/facebook/failure', function(req, res, next) {
-  res.render('auth/failure');
+  res.render('public/auth/failure');
 });
 
 router.get('/facebook/success', function(req, res, next) {
-  res.render('auth/success');
+  res.render('public/auth/success');
 });
 
 module.exports = router;

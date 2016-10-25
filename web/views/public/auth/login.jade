@@ -1,17 +1,26 @@
-extends layout
+extends ../../layouts/public
 
 
 block content
-	div(ng-controller="BubblesLoginController", flex, layout="column", layout-wrap, layout-padding)
+	div(
+		ng-controller="PublicLoginController"
+		flex
+		layout="column"
+		layout-wrap
+		layout-padding
+		)
 
-		dic.container
+		div.container
 			div.logo
 				img(src="/images/logo.png")
 			
 			h1 YOUTH PLATFORM
 
 			div.cta
-				md-button.md-raised.md-primary(fb-login,href="/auth/facebook") Login with Facebook
+				md-button.md-raised.md-primary(
+					fb-login
+					href="/public/auth/facebook"
+				) Login with Facebook
 			
 
 			div.toc.russian

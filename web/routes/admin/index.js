@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('admin/login');
+  res.render('admin/auth/login');
 });
 
 router.get('/compare', function(req, res, next) {
