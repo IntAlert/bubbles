@@ -1,10 +1,9 @@
-app.controller('TagsController', function ($scope, TagService, $mdDialog, $mdSidenav) {
+app.controller('TagsController', function ($scope, TagService, $mdDialog, $mdSidenav, $timeout) {
 
 	$scope.tags = TagService
 
 	$scope.tagDetail = {};
-
-
+	
 
 
 	// UPDATE

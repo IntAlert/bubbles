@@ -21,32 +21,35 @@ block content
 
 			//- Edit tag
 			md-sidenav.md-sidenav-right.md-whiteframe-4dp(
+				layout="column"
 				md-component-id="editTagForm"
-				)
+			)
 
 				md-toolbar.md-theme-light
-					h1.md-toolbar-tools {{tagDetail.name}}
+					h1.md-toolbar-tools Tag: {{tagDetail.name}}
 
-					md-content(layout-padding)
-						
-						form(flex, name="editTagForm")
-							md-input-container
-								label Tag name
-								input(
-									required
-									md-minlength="2"
-									ng-model='tagDetail.name'
-								)
+				md-content(layout-padding, flex)
+					
+					form(name="editTagForm", flex, layout="column")
+						md-input-container.md-block
+							label Tag name
+							input(
+								required
+								md-minlength="2"
+								ng-model='tagDetail.name'
+							)
 
-							md-button.md-primary.md-raised(
-								ng-click="update()"
-								ng-disabled="!editTagForm.$dirty || editTagForm.$invalid"
-								type="submit"
-							) Save Changes
+						md-button.md-primary.md-raised.md-block(
+							ng-click="update()"
+							ng-disabled="!editTagForm.$dirty || editTagForm.$invalid"
+							type="submit"
+						) Save Changes
 
-						divider
 
-						md-button.md-raised.md-warn(
+				md-content(flex=10)
+					div(flex)
+						md-button.md-raised.md-warn.md-block(
+							flex
 							ng-click="deleteTag()"
 						) Delete Tag
 
@@ -58,19 +61,19 @@ block content
 				md-toolbar.md-theme-light
 					h1.md-toolbar-tools Create New Tag
 
-					md-content(layout-padding)
-						
-						div.form(flex, name="newTagForm")
-							md-input-container
-								label Tag name
-								input(
-									required
-									md-minlength="2"
-									ng-model='newTagName'
-								)
+				md-content(layout-padding)
+					
+					form(flex, name="newTagForm", layout="column")
+						md-input-container.md-block
+							label Tag name
+							input(
+								required
+								md-minlength="2"
+								ng-model='newTagName'
+							)
 
-							md-button.md-primary.md-raised(
-								ng-click="createNewTag()"
-								ng-disabled="newTagForm.$invalid"
-								type="submit"
-							) Create tag
+						md-button.md-primary.md-raised.md-block(
+							ng-click="createNewTag()"
+							ng-disabled="newTagForm.$invalid"
+							type="submit"
+						) Create tag
