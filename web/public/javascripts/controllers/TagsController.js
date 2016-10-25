@@ -2,7 +2,27 @@ app.controller('TagsController', function ($scope, TagService, $mdDialog, $mdSid
 
 	$scope.tags = TagService
 
+	$scope.tagDetail = {};
 
+
+
+
+	// UPDATE
+	$scope.showEditTagForm = function(tag) {
+
+		$scope.tagDetail = tag
+
+		$mdSidenav('editTagForm').open()
+
+	}
+
+	$scope.update = function() {
+		TagService.update($scope.tagDetail)
+	}
+
+
+
+	// CREATE
 	$scope.showCreateTagForm = function() {
 		
 		$mdSidenav('createTagForm').open()
@@ -16,9 +36,14 @@ app.controller('TagsController', function ($scope, TagService, $mdDialog, $mdSid
 			})
 	}
 
-	$scope.deleteTag = function($ev, tag) {
+
+	// DELETE
+	$scope.deleteTag = function() {
 		
-		TagService.delete(tag.id)
+		TagService.delete($scope.tagDetail.id)
+			.then(function(){
+				$mdSidenav('editTagForm').close()
+			})
 	}
 
 })

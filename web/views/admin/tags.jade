@@ -11,16 +11,46 @@ block content
 				md-list(flex)
 					md-list-item(
 						ng-repeat="tag in tags.all"
+						ng-click="showEditTagForm(tag)"
 						)
 						p {{tag.name}}
-						md-icon.md-secondary(
-							ng-click="deleteTag($event, tag)"
-							class="material-icons step"
-							aria-label="Delete"
-						) Delete
+					
+					//- Create New tag link
 					md-list-item(ng-click="showCreateTagForm()")
 						p Create new tag
 
+			//- Edit tag
+			md-sidenav.md-sidenav-right.md-whiteframe-4dp(
+				md-component-id="editTagForm"
+				)
+
+				md-toolbar.md-theme-light
+					h1.md-toolbar-tools {{tagDetail.name}}
+
+					md-content(layout-padding)
+						
+						form(flex, name="editTagForm")
+							md-input-container
+								label Tag name
+								input(
+									required
+									md-minlength="2"
+									ng-model='tagDetail.name'
+								)
+
+							md-button.md-primary.md-raised(
+								ng-click="update()"
+								ng-disabled="!editTagForm.$dirty || editTagForm.$invalid"
+								type="submit"
+							) Save Changes
+
+						divider
+
+						md-button.md-raised.md-warn(
+							ng-click="deleteTag()"
+						) Delete Tag
+
+			//- Create New tag
 			md-sidenav.md-sidenav-right.md-whiteframe-4dp(
 				md-component-id="createTagForm"
 				)
@@ -36,7 +66,6 @@ block content
 								input(
 									required
 									md-minlength="2"
-									name="newTag"
 									ng-model='newTagName'
 								)
 

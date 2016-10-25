@@ -190,6 +190,17 @@ h1 {
     padding:12px;
 }
 
+.md-sidenav-left .tag-selector{
+    text-align: left;
+}
+.md-sidenav-left .tag-selector-summary {
+    padding:8px;
+}
+
+.md-sidenav-right .profile_pic {text-align: center;}
+.md-sidenav-right .tag-selector-summary {
+    display: none;
+}
 
 
 

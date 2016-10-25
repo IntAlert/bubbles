@@ -82,6 +82,31 @@ router.post('/', function(req, res, next) {
 		})
 })
 
+// Update a tag
+router.put('/:tagId', function(req, res, next) {
+	
+	var tagName = String(req.body.name).trim()
+
+	// check if tag already exists
+	models.Tag.findById(req.params.tagId)
+		.then(function(tag){
+
+			tag.name = tagName
+			return tag.save()
+
+
+		})
+
+		.then(function(tag, created) {
+
+			// respond with tag
+			res.json({
+				tag: tag
+			})
+
+		})
+})
+
 // Delete a tag
 router.delete('/:tagId', function(req, res, next) {
 

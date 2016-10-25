@@ -11,25 +11,44 @@ app.controller('UsersController', function ($scope, $window, $location, $anchorS
 	// USER LISTING
 	$scope.query = {}
 
-	var filterUsers = function() {
-
-		var usersFiltered = angular.copy($scope.users.all)
-
-
-
-
-		return usersFiltered
-	}
-
 	$scope.filterUser = function(user) {
 		return function(user) {
 
-			if($scope.query.displayName && user.displayName.toLowerCase().indexOf($scope.query.displayName.toLowerCase()) == -1) {
+			if( $scope.query.displayName && !checkNameMatch(user, $scope.query.displayName) ) {
 				return false
+			}
+
+			if( !checkTagMatch(user, $scope.query.selectedTags) ) {
+				return false;
 			}
 
 			return true;
 		};
+	}
+
+	var checkNameMatch = function(user, search) {
+		return (user.displayName
+				.toLowerCase()
+				.indexOf(search.toLowerCase()) > -1)
+	}
+
+	var checkTagMatch = function(user, selectedTags) {
+
+		// if no tags selected, return true
+		if (selectedTags.length == 0) return true
+
+		// does the user contains any of the selected
+		
+		var selectedTagIds = selectedTags.map(function(e) { return e.id; })
+		var userTagIds = user.Tags.map(function(e) { return e.id; })
+		var intersection = selectedTagIds.filter(function(n) {
+		    return userTagIds.indexOf(n) != -1;
+		})
+
+		var hasAtleastOneTag = intersection.length > 0
+
+		return hasAtleastOneTag
+
 	}
 
 
@@ -51,6 +70,9 @@ app.controller('UsersController', function ($scope, $window, $location, $anchorS
 
 	$scope.createNewTag = function() {
 		TagService.create($scope.newTagName)
+			.then(function(){
+				$scope.newTagName = ''
+			})
 	}
 
 

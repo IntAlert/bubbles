@@ -72,7 +72,6 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 
 	var filterGraphByTag = function(graphData, selectedTags) {
 
-		console.log(selectedTags)
 
 		angular.forEach(graphData.nodes, function(node) {
 
@@ -83,8 +82,6 @@ app.controller('BubblesAdminController', function ($scope, $window, $location, $
 			var intersection = selectedTagIds.filter(function(n) {
 			    return nodeTagIds.indexOf(n) != -1;
 			})
-
-			console.log(selectedTagIds)
 
 			var hasAtleastOneTag = intersection.length > 0
 

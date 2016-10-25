@@ -24,6 +24,17 @@ app.factory('TagService', function($http) {
 		})
 	}
 
+	instance.update = function(tag) {
+		return $http.put('/api/tags/' + tag.id, {
+			name: tag.name
+		})
+		.then(function(response){
+			return instance.getAll()
+		}, function(){
+			console.log("Tag update did not work")
+		})
+	}
+
 	instance.updateUserTags = function(userId, tagIds) {
 		return $http.post('/api/tags/user/' + userId, {
 			tagIds: tagIds
