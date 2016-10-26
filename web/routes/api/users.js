@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../../shared/models');
+var roles = require('../../lib/authorisation')
 
 /* GET all users. */
-router.get('/all', function(req, res, next) {
+router.get('/all', roles.can('access admin app'), function(req, res, next) {
 
 	models.User.findAll({
 		attributes: ['id', 'fb_id', 'displayName', 'gender'],
@@ -23,7 +24,7 @@ router.get('/all', function(req, res, next) {
 
 });
 
-router.post('/tag/:userId', function(req, res, next) {
+router.post('/tag/:userId', roles.can('access admin app'), function(req, res, next) {
 
 	models.User.findById(req.params.userId)
   	.then(function(user) {

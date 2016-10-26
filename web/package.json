@@ -3,24 +3,26 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development nodemon ./bin/www",
-    "start": "node ./bin/www"
+    "dev": "sequelize db:migrate; NODE_ENV=development nodemon ./bin/www",
+    "start": "sequelize db:migrate; node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
+    "connect-roles": "^3.1.2",
     "cookie-parser": "~1.4.3",
+    "cookie-session": "^2.0.0-alpha.1",
     "debug": "~2.2.0",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
+    "mysql": "~2.11.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "request": "^2.74.0",
     "request-promise": "^4.1.1",
-    "serve-favicon": "~2.3.0",
     "sequelize": "~3.24.3",
-    "mysql": "~2.11.1"
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

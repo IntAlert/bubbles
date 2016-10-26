@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../../shared/models');
-
+var roles = require('../../lib/authorisation')
 
 /* GET all scrapes. */
-router.get('/all', function(req, res, next) {
+router.get('/all', roles.can('access admin app'), function(req, res, next) {
 
   models.Scrape.findAll()
   	.then(function(scrapes) {
@@ -18,7 +18,7 @@ router.get('/all', function(req, res, next) {
 
 });
 
-router.get('/:scrapeId', function(req, res, next) {
+router.get('/:scrapeId', roles.can('access admin app'), function(req, res, next) {
 
   models.Scrape.findById(req.params.scrapeId, {
 	  	include: [{

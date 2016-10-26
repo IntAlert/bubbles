@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../../shared/models');
-
+var roles = require('../../lib/authorisation')
 
 /* GET all tags. */
-router.get('/all', function(req, res, next) {
+router.get('/all', roles.can('access admin app'), function(req, res, next) {
 
   models.Tag.findAll()
   	.then(function(tags) {
@@ -19,7 +19,7 @@ router.get('/all', function(req, res, next) {
 });
 
 // Overwrite all user tags according to POST tagIds
-router.post('/user/:userId', function(req, res, next) {
+router.post('/user/:userId', roles.can('access admin app'), function(req, res, next) {
 
 	models.User
 	.findById(req.params.userId)
@@ -57,7 +57,7 @@ router.post('/user/:userId', function(req, res, next) {
 
 
 // Create a new tag
-router.post('/', function(req, res, next) {
+router.post('/', roles.can('access admin app'), function(req, res, next) {
 	
 	var tagName = String(req.body.tagName).trim()
 
@@ -83,7 +83,7 @@ router.post('/', function(req, res, next) {
 })
 
 // Update a tag
-router.put('/:tagId', function(req, res, next) {
+router.put('/:tagId', roles.can('access admin app'), function(req, res, next) {
 	
 	var tagName = String(req.body.name).trim()
 
@@ -108,7 +108,7 @@ router.put('/:tagId', function(req, res, next) {
 })
 
 // Delete a tag
-router.delete('/:tagId', function(req, res, next) {
+router.delete('/:tagId', roles.can('access admin app'), function(req, res, next) {
 
 	models.Tag.findById(req.params.tagId)
 	  	.then(function(tag) {
