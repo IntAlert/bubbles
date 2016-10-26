@@ -75,6 +75,11 @@ app.controller('UsersController', function ($scope, $window, $location, $anchorS
 			})
 	}
 
+	$scope.updateAdminApproval = function() {
+		UserService
+			.updateAdminApproval($scope.userDetail.id, $scope.userDetail.is_admin_approved)
+	}
+
 
 	// Update tagging
 	// This updates the first time the sidenav is loaded

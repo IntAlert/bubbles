@@ -70,6 +70,14 @@ block content
 								ng-src="http://graph.facebook.com/{{userDetail.fb_id}}/picture?type=large"
 							)
 
+						md-checkbox(
+							 aria-label="Disabled checkbox" 
+							 ng-model="userDetail.is_admin_approved"
+							 ng-change="updateAdminApproval()"
+						) Approved as Admin
+
+						//- pre {{userDetail | json}}
+
 
 						tag-selector( 
 							available-tags="tags.all",

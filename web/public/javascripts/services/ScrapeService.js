@@ -18,6 +18,7 @@ app.factory('ScrapeService', function($http) {
 			})
 	}
 
+
 	return instance
 
 })

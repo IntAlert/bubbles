@@ -37,8 +37,14 @@ router.get('/facebook/failure', function(req, res, next) {
   res.render('admin/auth/failure');
 });
 
-router.get('/facebook/success', roles.can('access admin app'), function(req, res, next) {
-  res.render('admin/auth/success');
+router.get('/facebook/success', roles.can('access admin app unapproved'), function(req, res, next) {
+	if (req.user.is_admin_approved) {
+		res.render('admin/auth/success');
+	} else {
+		res.render('admin/auth/success_unapproved');
+	}
+  
+
 });
 
 module.exports = router;

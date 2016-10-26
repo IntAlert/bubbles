@@ -7,7 +7,7 @@ var roles = require('../../config/authorisation')
 router.get('/all', roles.can('access admin app'), function(req, res, next) {
 
 	models.User.findAll({
-		attributes: ['id', 'fb_id', 'displayName', 'gender'],
+		attributes: ['id', 'fb_id', 'displayName', 'gender', 'is_admin', 'is_admin_approved'],
 		include: [{
 			model: models.Tag,
 			attributes: ['id', 'name']
@@ -16,7 +16,7 @@ router.get('/all', roles.can('access admin app'), function(req, res, next) {
   	.then(function(users) {
 
 		// respond
-		res.json({
+		return res.json({
 			users:users
 		})
 
@@ -30,7 +30,7 @@ router.post('/tag/:userId', roles.can('access admin app'), function(req, res, ne
   	.then(function(user) {
 
   		if ( !user ) {
-  			res.status(404)
+  			return res.status(404)
   				.json("No user " + req.params.userId)
   		}
 
@@ -55,6 +55,30 @@ router.post('/tag/:userId', roles.can('access admin app'), function(req, res, ne
 
 
 		})
+
+	});
+
+});
+
+router.put('/updateAdminApproval/:userId', roles.can('access admin app'), function(req, res, next) {
+
+	models.User.findById(req.params.userId)
+  	.then(function(user) {
+
+  		if ( !user ) {
+
+  			return res.status(404)
+  				.json("No user " + req.params.userId)
+  		}
+
+  		user.is_admin_approved = req.body.is_admin_approved
+  		user.save()
+	  		.then(function(){
+	  			// respond
+				res.json({
+					user:user
+				})
+	  		})
 
 	});
 
