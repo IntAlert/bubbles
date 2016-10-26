@@ -22,14 +22,14 @@
     "request": "^2.74.0",
     "request-promise": "^4.1.1",
     "sequelize": "~3.24.3",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sequelize-cli": "^2.4.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.3.0",
     "gulp-expect-file": "0.0.7",
-    "gulp-watch": "^4.3.10",
-    "sequelize-cli": "^2.4.0"
+    "gulp-watch": "^4.3.10"
   }
 }

@@ -1,6 +1,6 @@
 // Public
-var public_index = require('../routes/public/index');
-var public_auth = require('../routes/public/auth');
+var frontend_index = require('../routes/frontend/index');
+var frontend_auth = require('../routes/frontend/auth');
 
 // Admin
 var admin_index = require('../routes/admin/index');
@@ -14,8 +14,8 @@ var api_tags = require('../routes/api/tags');
 
 var initRoutes = function(app) {
 	// PUBLIC routes
-	app.use('/', public_index);
-	app.use('/public/auth', public_auth);
+	app.use('/', frontend_index);
+	app.use('/frontend/auth', frontend_auth);
 
 	// ADMIN routes
 	app.use('/admin', admin_index);

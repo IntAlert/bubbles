@@ -17,10 +17,10 @@ passport.deserializeUser(function(id, done) {
 });
 
 // configure facebook for public access
-passport.use('FacebookPublic', new FacebookStrategy({
+passport.use('FacebookFrontend', new FacebookStrategy({
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_CLIENT_SECRET,
-    callbackURL: process.env.FB_CALLBACK_URL_PUBLIC
+    callbackURL: process.env.FB_CALLBACK_URL_FRONTEND
   },
   function(accessToken, refreshToken, profile, done) {
 
