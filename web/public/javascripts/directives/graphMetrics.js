@@ -15,7 +15,6 @@ app.directive('graphMetrics', function() {
 
     		var selectedLinkCount = 0
     		var selectedNodeCount = 0
-    		var interconnectedness_percentage = 0
 
     		// is data ready?
     		if (!$scope.graphData || !Array.isArray($scope.graphData.nodes) || !Array.isArray($scope.graphData.links)) {
@@ -32,10 +31,15 @@ app.directive('graphMetrics', function() {
 
 			});
 
+            console.log('begin')
     		angular.forEach($scope.graphData.links, function(link) {
 
     			// how many links shown
-        		if (!link.source.filteredOutByTag && !link.source.filteredOutByTag) {
+        		if (
+                    !link.source.filteredOutByTag 
+                    && !link.target.filteredOutByTag
+                    && link.source.fb_id != link.target.fb_id //exclude self link
+                ) {
 					selectedLinkCount++
 				}
             		
