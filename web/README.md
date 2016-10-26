@@ -19,17 +19,21 @@ To get the application running on your local machine:
 
 Deployment
 ===
-To deploy this application to AWS:
+Setting up AWS for the first time:
 
 1. Log in to your [AWS console](https://console.aws.amazon.com/console/home)
 2. Set up RDS instance and note down database credentials
-3. Configure networking/security groups for RDS instance
+<!-- 3. Configure networking/security groups for RDS instance -->
 4. [Create an IAM user for deployment of this app](console.aws.amazon.com/iam/home?region=eu-west-1#users) and note down the credentials
 4. Attach the "AWSElasticBeanstalkFullAccess" policy to this user
 5. Using AWS CLI, create a local profile for this application: ```aws configure --profile bubbles```. Add your IAM credentials when prompted
 6. In this folder, initialise the Beanstalk application: ```eb init --profile bubbles```
 7. In this folder, create an environment. In this case, an environment called "staging": ```eb create staging```
-
+8. Once this is complete, navigate to the Configuration panel for the Beanstalk app within the AWS Console. Under scaling, change the application type to "Single Instance"
+9. Record the Elastic IP address of the application
+10. Create a networking/security group for the RDS instance to allow access to the database from the application using this IP address. Optionally, allow access from your own IP
+11. Set environment variables. In this folder, 
+	```eb setenv RDS_USERNAME="***" RDS_PASSWORD=*** RDS_DB_NAME=*** RDS_HOSTNAME=*** FB_CLIENT_ID=*** FB_CLIENT_SECRET=*** FB_CALLBACK_URL_PUBLIC=*** FB_CALLBACK_URL_ADMIN=***```
 
 
 

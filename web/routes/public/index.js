@@ -10,6 +10,10 @@ router.get('/', function(req, res, next) {
 	res.render('public/auth/login');
 });
 
+router.get('/hello', function(req, res, next) {
+	res.json({'Hello':'world'});
+});
+
 
 
 
