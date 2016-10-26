@@ -10,12 +10,12 @@ var roles = new ConnectRoles();
 
 // logged in public users can only access public stuff
 roles.use('access public app', function (req) {
-  return req.user.is_admin
+  return req.isAuthenticated()
 })
 
 // admin
 roles.use('access admin app', function (req) {
-  return req.user.is_admin
+  return req.user.is_admin && req.user.is_admin_approved
 })
 
 module.exports = roles;

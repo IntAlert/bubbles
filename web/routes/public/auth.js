@@ -4,7 +4,7 @@ var models = require('../../shared/models');
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 const url = require('url');
-var roles = require('../../lib/authorisation')
+var roles = require('../../config/authorisation')
 
 
 

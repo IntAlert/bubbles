@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../../shared/models');
-var roles = require('../../lib/authorisation')
+var roles = require('../../config/authorisation')
 
 /* GET all scrapes. */
 router.get('/all', roles.can('access admin app'), function(req, res, next) {

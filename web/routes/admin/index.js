@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var roles = require('../../lib/authorisation')
+var roles = require('../../config/authorisation')
 
 /* GET home page. */
 // anyone can access

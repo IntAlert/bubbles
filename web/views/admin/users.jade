@@ -76,7 +76,7 @@ block content
 							selected-tags="userDetail.Tags"
 						)
 						
-						form(name="newTagForm")
+						form(name="newTagForm", layout="column")
 							md-input-container.md-block
 								label Create a tag
 								input(
@@ -85,10 +85,10 @@ block content
 								)
 
 									
-							md-button.md-raised.md-primary(
+							md-button.md-raised.md-primary.md-block(
 								ng-disabled="newTagForm.$invalid"
 								ng-click="createNewTag()"
-							) Add
+							) Create Tag
 
 
 
