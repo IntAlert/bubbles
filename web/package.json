@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "sequelize db:migrate; NODE_ENV=development nodemon ./bin/www",
-    "start": "sequelize db:migrate; node ./bin/www"
+    "dev": "node_modules/sequelize-cli/bin/sequelize db:migrate; NODE_ENV=development nodemon ./bin/www",
+    "start": "node_modules/sequelize-cli/bin/sequelize db:migrate; node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
