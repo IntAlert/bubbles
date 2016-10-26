@@ -11,7 +11,7 @@ app.factory('D3GraphOptionsService', function() {
                 return color(d.group)
             },
             charge: -1000,
-            linkDist: 120,
+            linkDist: 10,
             linkExtras: function(links) {
 
             	links[0].forEach(function(link){

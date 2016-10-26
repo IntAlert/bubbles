@@ -8,6 +8,8 @@ var app = angular
 			'ui.utils.masks'
 		]
 	)
+
+
 	// .config(function($compileProvider, $locationProvider, $mdThemingProvider, $mdIconProvider){
 	//   $mdIconProvider
 	//     .defaultIconSet('/components/material-design-icons/iconfont/MaterialIcons-Regular.svg', 24)

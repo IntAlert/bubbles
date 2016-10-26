@@ -30,6 +30,9 @@ block content
 							{{$last ? 'Most Recent Snapshot: ':''}}
 							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
 							
+				//- Metrics
+				graph-metrics(graph-data="graphs[0].data")
+
 				//- Graph			
 				div.graph
 					nvd3(
@@ -62,6 +65,9 @@ block content
 							{{$first ? 'First Snapshot: ':''}}
 							{{$last ? 'Most Recent Snapshot: ':''}}
 							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
+				//- Metrics
+				graph-metrics(graph-data="graphs[1].data")
+
 				//- Graph			
 				div.graph
 					nvd3(
