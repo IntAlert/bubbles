@@ -66,7 +66,7 @@ block content
 							{{$last ? 'Most Recent Snapshot: ':''}}
 							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
 				//- Metrics
-				//- graph-metrics(graph-data="graphs[1].data")
+				graph-metrics(graph-data="graphs[1].data")
 
 				//- Graph			
 				div.graph
