@@ -17,8 +17,6 @@
     "angular-material": "^1.1.1",
     "angular-input-masks": "^2.4.0",
     "angular-nvd3": "^1.0.9",
-    "checklist-model": "^0.10.0",
-    "md-color-picker": "^0.2.6",
-    "angularjs-slider": "^5.5.1"
+    "checklist-model": "^0.10.0"
   }
 }

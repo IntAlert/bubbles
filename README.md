@@ -9,7 +9,7 @@ Components
 - Admin Web Application: Allows visualisation of users and friendships using tags
 - Poller: An AWS Lambda function which polls Facebook friendships of users using this app
 
-Development guide
+Development guides
 ===
 - [Web application](./web/README.md)
 - [Poller](./web/README.md)
