@@ -6,7 +6,15 @@ module.exports = function(sequelize, DataTypes) {
     displayName: DataTypes.TEXT,
     gender: DataTypes.STRING,
     accessToken: DataTypes.STRING,
-    refreshToken: DataTypes.STRING
+    refreshToken: DataTypes.STRING,
+    is_admin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    is_admin_approved: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     classMethods: {
       associate: function(models) {

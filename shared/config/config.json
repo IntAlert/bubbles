@@ -1,0 +1,23 @@
+-{
+  "local": {
+    "username": "root",
+    "password": null,
+    "database": "bubbles",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "development": {
+    "username": "bubbles",
+    "password": "oneB23VYGBYVzc",
+    "database": "bubbles",
+    "host": "bubbles.c3vcgdaryr9n.eu-west-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
