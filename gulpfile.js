@@ -29,8 +29,8 @@ gulp.task('shared', function() {
 		.src(['./shared/**/*'])
 		.pipe(gulp.dest('./web/shared'));
 
-	// gulp
-	// 	.src(['./shared/**/*'])
-	// 	.pipe(gulp.dest('./poller/shared'));
+	gulp
+		.src(['./shared/**/*'])
+		.pipe(gulp.dest('./poller/shared'));
 
 })

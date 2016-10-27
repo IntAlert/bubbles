@@ -1,7 +1,8 @@
 Bubbles
 ===
-
 An application to visualise Facebook friendships of a users who sign up to the application.
+
+The purpose of the app is to measure whether we can increase the number of Facebook friendships of people participating in International Alert workshops.
 
 Components
 ===

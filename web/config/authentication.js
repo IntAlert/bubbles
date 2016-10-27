@@ -77,7 +77,7 @@ passport.use('FacebookAdmin', new FacebookStrategy({
         
       
     })
-    .then(function(){
+    .then(function(user){
       console.log(user)
       done(null, user);
     })

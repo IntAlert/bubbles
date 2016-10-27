@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
     friend2_id: {
       type: DataTypes.STRING,
       unique: 'directionalFriendship'
+    },
+    ScrapeId: {
+      type: DataTypes.INTEGER,
+      unique: 'directionalFriendship'
     }
   }, {
     classMethods: {
@@ -63,5 +67,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return Friendship;
 };
-
-

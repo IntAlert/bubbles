@@ -1,9 +1,6 @@
 var Q = require('q');
-var fb = require('./lib/facebook');
+var fb = require('./lib/facebook')(process.env);
 var models = require('./shared/models/');
-
-
-
 
 
 var data = {
@@ -15,17 +12,12 @@ var data = {
 // For development/testing purposes
 exports.handler = function( event, context, callback) {
 
-	// models.Tag.findAll()
- //  	.then(function(tags) {
 
-	// 	// respond
-	// 	console.dir( tags );
-
-	// });
+	console.log('Starting with environment variables: ');
+	console.dir(process.env)
 
 	// get all existing users
 	getAllUsers()
-
 
 	// create a scrape
 	.then(createScrape)
@@ -79,6 +71,8 @@ function getAllFriends() {
 
 		if(!res || res.error) {
 			deferred.reject(new Error(res.error));
+			console.log("getAllFriends Error: ")
+			console.log(res.error)
 	    }
 
 	    for (var i = res.length - 1; i >= 0; i--) {
@@ -104,15 +98,12 @@ function getAllFriends() {
 function saveFriendships() {
 
 	console.log('saveFriendships')
-console.log(data.friendLists)
 
 	var records = [];
 	for (var i = data.friendLists.length - 1; i >= 0; i--) {
 
 		var user = data.users[i];
 		var friendList = data.friendLists[i];
-
-		console.log(friendList)
 
 		for (var j = friendList.length - 1; j >= 0; j--) {
 			var friend = friendList[j]
@@ -126,8 +117,6 @@ console.log(data.friendLists)
 		}
 		
 	}
-
-	console.log(records)
 
 	return models.Friendship.bulkCreate(records)
 		.then(function() { // Notice: There are no arguments here, as of right now you'll have to...

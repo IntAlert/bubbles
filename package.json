@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-concat-css": "^2.3.0",
-    "gulp-expect-file": "^0.0.7",
-    "gulp-watch": "^4.3.10"
-  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",

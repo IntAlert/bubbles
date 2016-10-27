@@ -1,10 +1,18 @@
 var FB = require('fb');
 
-var fb = new FB.Facebook({
-	appId: '533560176843182', 
-	appSecret: '687fba6879bf346e6463417d43631751'
-});
+module.exports = function(env) {
 
-fb.setAccessToken('533560176843182|mDlOzX76S8WeHkqyzPKFTthlX44');
+	console.log("Facebook, using the following creds: ")
+	console.dir(env)
 
-module.exports = fb;
+
+	var fb = new FB.Facebook({
+		appId: env.FB_CLIENT_ID,
+		appSecret: env.FB_CLIENT_SECRET
+	});
+
+	fb.setAccessToken(env.FB_ACCESS_TOKEN);
+
+	return fb
+
+};

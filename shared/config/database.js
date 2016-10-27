@@ -8,4 +8,7 @@ var config = {
   "dialect": "mysql"
 }
 
+console.log('Using the following database credentials');
+console.dir(config)
+
 module.exports = config;

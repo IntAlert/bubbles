@@ -1,7 +1,5 @@
 Web application
 ====
-The purpose of the app is to measure whether we can increase the number of Facebook friendships of people participating in International Alert workshops.
-
 The public application allows visitors to the root of the application to sign in. Once they have signed in, the poller will regularly scrape their friendships with *users who also use this app*. 
 
 The admin application allows the facilitator to visualise friendships between users of this application. It allows user tagging, user filtering and uses an implementation of D3.js Force Directed Graphs to visualise interconnectedness of application users.
