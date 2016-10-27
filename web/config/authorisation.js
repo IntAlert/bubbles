@@ -15,11 +15,11 @@ roles.use('access public app', function (req) {
 
 // admin
 roles.use('access admin app', function (req) {
-  return req.user.is_admin && req.user.is_admin_approved
+  return req.isAuthenticated() && req.user.is_admin && req.user.is_admin_approved
 })
 
 roles.use('access admin app unapproved', function (req) {
-  return req.user.is_admin
+  return req.isAuthenticated() && req.user.is_admin
 })
 
 module.exports = roles;
