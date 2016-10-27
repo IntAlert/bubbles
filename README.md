@@ -15,3 +15,10 @@ Development guides
 - [Web application](./web/README.md)
 - [Poller](./web/README.md)
 - [Shared models](./shared/README.md)
+
+Further development
+===
+- Ability to remove users
+- Create default tagging for new users
+- More intuitive filtering by "No Tag" in users
+- Ability to determine users not in group

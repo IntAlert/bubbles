@@ -31,7 +31,6 @@ app.directive('graphMetrics', function() {
 
 			});
 
-            console.log('begin')
     		angular.forEach($scope.graphData.links, function(link) {
 
     			// how many links shown
@@ -45,8 +44,12 @@ app.directive('graphMetrics', function() {
             		
         	})
 
+            // calculate metrics
     		$scope.user_count = selectedNodeCount
-        	$scope.interconnectedness = (selectedNodeCount == 0) ? 0 : (selectedLinkCount/selectedNodeCount)/2
+
+            // How many could there be? Thanks Gauss!
+            var possible_friendship_count = selectedNodeCount * (selectedNodeCount - 1 ) / 2
+        	$scope.interconnectedness = (selectedNodeCount == 0) ? 0 : (selectedLinkCount/possible_friendship_count)/2 // link count is bi-derectional
         	$scope.interconnectedness_percentage = Math.round(100 * $scope.interconnectedness)
 
     	}, true)
