@@ -37,7 +37,7 @@ passport.use('FacebookFrontend', new FacebookStrategy({
           refreshToken: refreshToken
       }
     })
-    .spread(function(user, createdAt){
+    .spread(function(user, created){
       if (!user) { return done('User not logged in'); }
       
       done(null, user);
@@ -67,18 +67,19 @@ passport.use('FacebookAdmin', new FacebookStrategy({
           refreshToken: refreshToken
       }
     })
-    .spread(function(user, createdAt){
+    .spread(function(user, created){
       if (!user) { return done('User not logged in'); }
 
       // mark the user as admin
       // but don't approve
       user.is_admin = true;
-      user.save()
-        .then(function(){
-          console.log(user)
-          done(null, user);
-        })
+      return user.save()
+        
       
+    })
+    .then(function(){
+      console.log(user)
+      done(null, user);
     })
 
   }

@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieSession({
   name: 'bubbles',
-  keys: ['lnk23nkl23nkl23lnk23', '23f2323f3g23g2']
+  keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2, process.env.COOKIE_KEY_3]
 }))
 
 app.use(bodyParser.json());

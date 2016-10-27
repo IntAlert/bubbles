@@ -33,7 +33,7 @@ Setting up AWS for the first time:
 9. Record the Elastic IP address of the application
 10. Create a networking/security group for the RDS instance to allow access to the database from the application using this IP address. Optionally, allow access from your own IP
 11. Set environment variables. In this folder, 
-	```eb setenv RDS_USERNAME="***" RDS_PASSWORD=*** RDS_DB_NAME=*** RDS_HOSTNAME=*** FB_CLIENT_ID=*** FB_CLIENT_SECRET=*** FB_CALLBACK_URL_FRONTEND="http://bubbles.intalert.org/frontend/auth/facebook/callback" FB_CALLBACK_URL_ADMIN="http://bubbles.intalert.org/admin/auth/facebook/callback"```
+	```eb setenv RDS_USERNAME="***" RDS_PASSWORD=*** RDS_DB_NAME=*** RDS_HOSTNAME=*** FB_CLIENT_ID=*** FB_CLIENT_SECRET=*** FB_CALLBACK_URL_FRONTEND="http://bubbles.intalert.org/frontend/auth/facebook/callback" FB_CALLBACK_URL_ADMIN="http://bubbles.intalert.org/admin/auth/facebook/callback" COOKIE_KEY_1=*** COOKIE_KEY_2=*** COOKIE_KEY_3=***```
 12. Finally, ```eb deploy``` ( you will need to do this at least twice to get models and migrations sync'd TODO: move all model definitions into migrations)
 
 
