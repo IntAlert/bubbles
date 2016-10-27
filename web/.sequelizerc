@@ -2,5 +2,6 @@ var path = require('path')
 
 module.exports = {
   'config': path.resolve('shared/config', 'database.js'),
-  'migrations-path': path.resolve('shared', 'migrations')
+  'migrations-path': path.resolve('shared', 'migrations'),
+  'models-path': path.resolve('shared', 'models')
 }

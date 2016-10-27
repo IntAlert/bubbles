@@ -75,6 +75,7 @@ passport.use('FacebookAdmin', new FacebookStrategy({
       user.is_admin = true;
       user.save()
         .then(function(){
+          console.log(user)
           done(null, user);
         })
       
