@@ -18,6 +18,7 @@ Development guides
 
 Further development
 ===
+- Show user details in Graph (MEDIUM)
 - Ability to remove users (EASY)
 - Create default tagging for new users (EASY)
 - More intuitive filtering by "No Tag" in users (EASY)

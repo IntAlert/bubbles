@@ -26,8 +26,8 @@ Development
 	RDS_USERNAME="root"
 	RDS_PASSWORD=
 	RDS_DB_NAME=bubbles2
-	RDS_HOSTNAME="127.0.0.1"
-	```
+	RDS_HOSTNAME="127.0.0.1"	
+```
 
 2. run ```node-lambda run```
 
@@ -49,7 +49,8 @@ Deployment
 	            ]
 	        }
 	    ]
-	}```
+	}
+```
 
 2. Create an AWS IAM role with "AWSLambdaBasicExecutionRole" policy. Record the Role ARN
 3. Update ```.env``` with this ARN
@@ -62,7 +63,7 @@ Deployment
 	RDS_PASSWORD=***
 	RDS_DB_NAME=***
 	RDS_HOSTNAME=***
-	```
+```
 
 3. ```npm run deploy```
 4. Login to [AWS Console for Lambda](https://eu-west-1.console.aws.amazon.com/lambda/home?region=eu-west-1#/functions?display=list)
