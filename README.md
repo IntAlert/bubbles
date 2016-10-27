@@ -18,7 +18,9 @@ Development guides
 
 Further development
 ===
-- Ability to remove users
-- Create default tagging for new users
-- More intuitive filtering by "No Tag" in users
-- Ability to determine users not in group
+- Ability to remove users (EASY)
+- Create default tagging for new users (EASY)
+- More intuitive filtering by "No Tag" in users (EASY)
+- Ability to determine users not in group (MEDIUM)
+- Ability make this work for mulptiple groups (MEDIUM)
+- Ability to determine group membership vs application membership (MEDIUM)
