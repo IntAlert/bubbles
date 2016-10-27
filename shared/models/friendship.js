@@ -1,8 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Friendship = sequelize.define('Friendship', {
-    friend1_id: DataTypes.STRING,
-    friend2_id: DataTypes.STRING
+    friend1_id: {
+      type: DataTypes.STRING,
+      unique: 'directionalFriendship'
+    },
+    friend2_id: {
+      type: DataTypes.STRING,
+      unique: 'directionalFriendship'
+    }
   }, {
     classMethods: {
       associate: function(models) {
