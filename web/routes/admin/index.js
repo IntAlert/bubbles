@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
   res.render('admin/auth/login');
 });
 
+router.get('/graph', roles.can('access admin app'), function(req, res, next) {
+  res.render('admin/graph');
+});
+
 router.get('/compare', roles.can('access admin app'), function(req, res, next) {
   res.render('admin/compare');
 });

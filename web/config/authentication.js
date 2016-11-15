@@ -31,16 +31,25 @@ passport.use('FacebookFrontend', new FacebookStrategy({
       }, 
       defaults: {
         fb_id: profile.id,
-          displayName: profile.displayName,
-          gender: profile.gender,
-          accessToken: accessToken,
-          refreshToken: refreshToken
+        displayName: profile.displayName,
+        gender: profile.gender,
+        accessToken: accessToken,
+        refreshToken: refreshToken
       }
     })
     .spread(function(user, created){
       if (!user) { return done('User not logged in'); }
       
-      done(null, user);
+      // update the user's name in case they have changed
+      // For efficiency, we could only do this if created==true
+      // but for code simplicity, have not done this
+      
+      user.displayName = profile.displayName;
+      user.save()
+        .then(function(user){
+          done(null, user);
+        })
+
     })
 
   }
@@ -61,10 +70,10 @@ passport.use('FacebookAdmin', new FacebookStrategy({
       }, 
       defaults: {
         fb_id: profile.id,
-          displayName: profile.displayName,
-          gender: profile.gender,
-          accessToken: accessToken,
-          refreshToken: refreshToken
+        displayName: profile.displayName,
+        gender: profile.gender,
+        accessToken: accessToken,
+        refreshToken: refreshToken
       }
     })
     .spread(function(user, created){

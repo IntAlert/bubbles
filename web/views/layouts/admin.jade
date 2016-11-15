@@ -43,7 +43,9 @@ html(class='no-js')
       h1 Bubbles Admin
       ul.clearfix
         li
-          a(href='/admin/compare') Graph Compare
+          a(href='/admin/graph') Single Graph
+        li
+          a(href='/admin/compare') Compare Graphs
         li
           a(href='/admin/users') Users
         li
@@ -79,6 +81,7 @@ html(class='no-js')
 
     //- controllers
     script(src="/javascripts/controllers/AdminLoginController.js")
+    script(src="/javascripts/controllers/AdminGraphController.js")
     script(src="/javascripts/controllers/AdminCompareController.js")
     script(src="/javascripts/controllers/UsersController.js")
     script(src="/javascripts/controllers/BubblesInvitesController.js")

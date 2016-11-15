@@ -1,0 +1,48 @@
+extends ../layouts/admin
+
+
+block content
+	div.compare(
+		ng-controller="AdminGraphController"
+		flex
+		layout="column"
+		layout-wrap
+		layout-padding
+		)
+
+		section(layout="row", flex)
+
+			md-content(flex, layout-padding)
+				md-input-container.scrapes.md-block(
+					layout="column"
+					layout-align="center center"
+				)
+					label Chosen Snapshot
+					md-select(
+						ng-model="graph.selectedScrape"
+						aria-label="Snapshot #1"
+					)
+						md-option(
+							ng-repeat="scrape in scrapes.all"
+							ng-value="scrape"
+						).
+							{{$first ? 'First Snapshot: ':''}}
+							{{$last ? 'Most Recent Snapshot: ':''}}
+							{{scrape.updatedAt | date:'dd/MM/yyyy HH:mm'}}
+							
+				//- Metrics
+				graph-metrics(graph-data="graph.data")
+
+				//- Graph			
+				div.graph
+					nvd3(
+						options="d3options"
+						data="graph.data"
+						api="graph.api"
+					)
+
+				div.tags
+					tag-selector( 
+						available-tags="tags.all",
+						selected-tags="graph.selectedTags"
+					)

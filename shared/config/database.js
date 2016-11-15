@@ -5,7 +5,11 @@ var config = {
   "password": process.env.RDS_PASSWORD,
   "database": process.env.RDS_DB_NAME,
   "host": process.env.RDS_HOSTNAME,
-  "dialect": "mysql"
+  // "port": 443,
+  "dialect": "mysql",
+  // "dialectOptions": {
+  // 	"SSL_VERIFY_SERVER_CERT": __dirname + '/../certs/amazon-rds-ca-cert.pem'
+  // }
 }
 
 console.log('Using the following database credentials');

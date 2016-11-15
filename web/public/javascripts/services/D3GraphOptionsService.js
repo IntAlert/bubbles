@@ -1,11 +1,30 @@
 app.factory('D3GraphOptionsService', function() {
 
 	var color = d3.scale.category20()
-    var instance = {
+    var template = {
         chart: {
+            "tooltip": {
+      "duration": 100,
+      "gravity": "w",
+      "distance": 25,
+      "snapDistance": 0,
+      "classes": null,
+      "chartContainer": null,
+      "enabled": true,
+      "hideDelay": 200,
+      "headerEnabled": true,
+      "fixedTop": null,
+      "offset": {
+        "left": 0,
+        "top": 0
+      },
+      "hidden": true,
+      "data": null,
+      "id": "nvtooltip-94345"
+    },
             type: 'forceDirectedGraph',
             height: 450,
-            width: (function(){ return nv.utils.windowSize().width / 2 - 20 })(),
+            // width: (function(){ return nv.utils.windowSize().width / 2 - 20 })(),
             margin:{top: 20, right: 20, bottom: 20, left: 20},
             color: function(d){
                 return color(d.group)
@@ -64,6 +83,17 @@ app.factory('D3GraphOptionsService', function() {
             }
         }
     };
+
+    var instance = {
+        get: function(config) {
+
+            // how many panes in the window, determine width
+            var panesPerWindow = config.panesPerWindow || 1;
+            var D3GraphOptions = angular.copy(template)
+            D3GraphOptions.chart.width = (function(){ return nv.utils.windowSize().width / panesPerWindow})()
+            return D3GraphOptions
+        }
+    }
 
 	return instance
 

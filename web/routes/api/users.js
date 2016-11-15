@@ -24,6 +24,7 @@ router.get('/all', roles.can('access admin app'), function(req, res, next) {
 
 });
 
+
 router.post('/tag/:userId', roles.can('access admin app'), function(req, res, next) {
 
 	models.User.findById(req.params.userId)
@@ -83,5 +84,27 @@ router.put('/updateAdminApproval/:userId', roles.can('access admin app'), functi
 	});
 
 });
+
+/* GET one user . */
+router.get('/:userId', roles.can('access admin app'), function(req, res, next) {
+
+	models.User.findOne({
+		attributes: ['id', 'fb_id', 'displayName', 'gender', 'is_admin', 'is_admin_approved'],
+		include: [{
+			model: models.Tag,
+			attributes: ['id', 'name']
+		}]
+	})
+  	.then(function(user) {
+
+		// respond
+		return res.json({
+			user:user
+		})
+
+	});
+
+});
+
 
 module.exports = router;

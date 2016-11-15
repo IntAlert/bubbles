@@ -16,6 +16,11 @@ Development guides
 - [Poller](./web/README.md)
 - [Shared models](./shared/README.md)
 
+Facebook Access Token
+===
+This can be acquired here:
+https://developers.facebook.com/tools/explorer/
+
 Further development
 ===
 - Show user details in Graph (MEDIUM)

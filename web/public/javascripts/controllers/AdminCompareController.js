@@ -7,7 +7,9 @@ app.controller('AdminCompareController', function ($scope, $window, $location, $
 	$scope.scrapes = ScrapeService
 
 	// Shared D3 Graph Options
-	$scope.d3options = D3GraphOptionsService
+	$scope.d3options = D3GraphOptionsService.get({
+		panesPerWindow: 2
+	})
 
 	// Two graphs
 	$scope.graphs = [
