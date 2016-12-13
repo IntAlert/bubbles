@@ -48,12 +48,12 @@ app.controller('AdminCompareController', function ($scope, $window, $location, $
 	// Update graph data on selectedTags change
     $scope.$watch('graphs[0].selectedTags', function(){
     	if ($scope.graphs[0].selectedScrape)
-	    	$scope.graphs[0].data = GraphFiltererService.byTags($scope.graphs[0].data, $scope.graphs[0].selectedTags)
+	    	$scope.graphs[0].data = GraphFiltererService.byTags($scope.graphs[0].data, $scope.graphs[0].selectedTags, $scope.graphs[0].booleanOperator)
     }, true)
 
     $scope.$watch('graphs[1].selectedTags', function(){
     	if ($scope.graphs[1].selectedScrape)
-	    	$scope.graphs[1].data = GraphFiltererService.byTags($scope.graphs[1].data, $scope.graphs[1].selectedTags)
+	    	$scope.graphs[1].data = GraphFiltererService.byTags($scope.graphs[1].data, $scope.graphs[1].selectedTags, $scope.graphs[1].booleanOperator)
     }, true)
 
 
