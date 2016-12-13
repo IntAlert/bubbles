@@ -18,7 +18,7 @@ router.get('/:scrapeId/all', roles.can('access admin app'), function(req, res, n
 
 });
 
-router.get('/:scrapeId/graph', roles.can('access admin app'), function(req, res, next) {
+router.get('/:scrapeId/graph', roles.can('access public app'), function(req, res, next) {
 
 	if (req.params.scrapeId == 'mostrecent') {
 		models.Scrape.getMostRecent()
