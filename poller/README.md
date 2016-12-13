@@ -6,6 +6,9 @@ This app uses the [node-lambda package](https://www.npmjs.com/package/node-lambd
 
 Development
 ===
+
+0. Make sure shared folder is created by ```gulp watch``` in parent folder
+
 1. Create a file in this folder called ```.env``` with the following contents
 	```
 	AWS_ENVIRONMENT=development
@@ -29,7 +32,9 @@ Development
 	RDS_HOSTNAME="127.0.0.1"	
 ```
 
-2. run ```node-lambda run```
+2. run ```npm install```
+
+3. run ```node-lambda run```
 
 Deployment
 ===

@@ -49,7 +49,9 @@ app.directive('graphMetrics', function() {
 
             // How many could there be? Thanks Gauss!
             var possible_friendship_count = selectedNodeCount * (selectedNodeCount - 1 ) / 2
-        	$scope.interconnectedness = (selectedNodeCount == 0) ? 0 : (selectedLinkCount/possible_friendship_count)/2 // link count is bi-derectional
+
+            // interconnectedness only makes sense if at least two nodes
+        	$scope.interconnectedness = (selectedNodeCount < 2) ? 0 : (selectedLinkCount/possible_friendship_count)/2 // link count is bi-derectional
         	$scope.interconnectedness_percentage = Math.round(100 * $scope.interconnectedness)
 
     	}, true)

@@ -22,7 +22,7 @@ router.get('/facebook', passport.authenticate('FacebookFrontend', { scope: 'user
 // authentication has failed.
 router.get('/facebook/callback',
   passport.authenticate('FacebookFrontend', { 
-  	failureRedirect: '/frontend/auth/facebook/failure', successRedirect: '/frontend/auth/facebook/success' 
+  	failureRedirect: '/frontend/auth/facebook/failure', successRedirect: '/frontend/mygraph' 
   })
 );
 

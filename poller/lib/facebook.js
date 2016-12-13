@@ -3,7 +3,7 @@ var FB = require('fb');
 module.exports = function(env) {
 
 	console.log("Facebook, using the following creds: ")
-	console.dir(env)
+	// console.dir(env)
 
 
 	var fb = new FB.Facebook({

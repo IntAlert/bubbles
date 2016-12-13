@@ -1,4 +1,4 @@
-app.controller('AdminGraphController', function ($scope, $window, $location, $anchorScroll, TagService, FriendshipService, ScrapeService, D3GraphOptionsService) {
+app.controller('AdminGraphController', function ($scope, $window, $location, $anchorScroll, TagService, FriendshipService, ScrapeService, D3GraphOptionsService, GraphFiltererService) {
 
 	$scope.ready = false;
 
@@ -11,12 +11,13 @@ app.controller('AdminGraphController', function ($scope, $window, $location, $an
 		panesPerWindow: 1
 	})
 
-	// Two graphs
+	// One graph
 	$scope.graph = {
 		data: null,
 		api: null,
 		selectedScrape: null,
-		selectedTags: null
+		selectedTags: null,
+		booleanOperator: "AND"
 	}
 
 	// Wait for everything to be loaded
@@ -31,46 +32,31 @@ app.controller('AdminGraphController', function ($scope, $window, $location, $an
 			$scope.graph.selectedScrape = $scope.scrapes.all[$scope.scrapes.all.length - 1] // last	
 		}
 	})
-	
 
 	// Update graph data on selectedTags change
     $scope.$watch('graph.selectedTags', function(){
     	if ($scope.graph.selectedScrape)
-	    	$scope.graph.data = filterGraphByTag($scope.graph.data, $scope.graph.selectedTags)
+	    	$scope.graph.data = GraphFiltererService.byTags($scope.graph.data, $scope.graph.selectedTags, $scope.graph.booleanOperator)
+    }, true)
+
+    // Update graph data on boolean change
+    $scope.$watch('graph.booleanOperator', function(){
+    	if ($scope.graph.selectedScrape)
+	    	$scope.graph.data = GraphFiltererService.byTags($scope.graph.data, $scope.graph.selectedTags, $scope.graph.booleanOperator)
     }, true)
 
 	// Update graph data on selectedScrape Change
 	$scope.$watch('graph.selectedScrape', function(){
 		if ($scope.graph.selectedScrape) {
 			FriendshipService.getGraphByScrapeId($scope.graph.selectedScrape.id).then(function(graphData){
-		        $scope.graph.api.updateWithData(filterGraphByTag(graphData, $scope.graph.selectedTags))
+				var graphData = GraphFiltererService.byTags(graphData, $scope.graph.selectedTags, $scope.graph.booleanOperator)
+		        $scope.graph.api.updateWithData(graphData)
 		    })	
 		}
 	})
 
 
-	var filterGraphByTag = function(graphData, selectedTags) {
-
-
-		angular.forEach(graphData.nodes, function(node) {
-
-			// does the node contains any of the selected
-			
-			var selectedTagIds = selectedTags.map(function(e) { return e.id; })
-			var nodeTagIds = node.Tags.map(function(e) { return e.id; })
-			var intersection = selectedTagIds.filter(function(n) {
-			    return nodeTagIds.indexOf(n) != -1;
-			})
-
-			var hasAtleastOneTag = intersection.length > 0
-
-			node.filteredOutByTag = !hasAtleastOneTag
-
-		});
-
-		return graphData
-
-	}
+	
 
 
 

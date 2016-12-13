@@ -12,6 +12,11 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Scrape.hasMany(models.Friendship);
+      },
+      getMostRecent: function(){
+        return this.findOne({
+          order: [['id', 'DESC']]
+        })
       }
     }
   });

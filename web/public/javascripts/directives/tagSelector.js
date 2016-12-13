@@ -3,7 +3,8 @@ app.directive('tagSelector', function() {
     templateUrl: '/partials/directives/tagSelector',
     scope: {
     	availableTags: '=',
-    	selectedTags: '='
+    	selectedTags: '=',
+    	booleanOperator: '='
     },
     controller: function($scope) {
 
@@ -15,12 +16,7 @@ app.directive('tagSelector', function() {
 
     	// by default we select all tags
     	// NB. Once the tags are loaded
-    	$scope.selectedTags = angular.copy($scope.availableTags);
-    	$scope.$watch('availableTags', function(newValue, oldValue){
-    		if (oldValue.length == 0) {
-	    		$scope.selectedTags = angular.copy($scope.availableTags);
-    		}
-    	})
+    	$scope.selectedTags = []
 
 		// Public
 		$scope.isSelected = function(tag){

@@ -1,0 +1,33 @@
+extends ../layouts/public
+
+block content
+	div.container
+		div.logo
+			img(src="/images/logo.png")
+
+		h1 YOUTH PLATFORM
+		h2 Thank you for logging in, #{user.displayName}
+		p Camille will be in touch with you soon to invite you to the <strong>Private</strong> Facebook Group
+
+	div.mygraph(
+		ng-controller="PublicMygraphController"
+		flex
+		layout="column"
+		layout-wrap
+		layout-padding
+		)
+
+		section(layout="row", flex)
+
+			md-content(flex, layout-padding)
+							
+				//- Metrics
+				graph-metrics(graph-data="graph.data")
+
+				//- Graph			
+				div.graph
+					nvd3(
+						options="d3options"
+						data="graph.data"
+						api="graph.api"
+					)

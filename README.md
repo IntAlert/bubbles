@@ -13,7 +13,7 @@ Components
 Development guides
 ===
 - [Web application](./web/README.md)
-- [Poller](./web/README.md)
+- [Poller](./poller/README.md)
 - [Shared models](./shared/README.md)
 
 Facebook Access Token
@@ -30,3 +30,5 @@ Further development
 - Ability to determine users not in group (MEDIUM)
 - Ability make this work for mulptiple groups (MEDIUM)
 - Ability to determine group membership vs application membership (MEDIUM)
+- Detect when a user has prevented friend_list permission
+- Admin Auth failure 404s

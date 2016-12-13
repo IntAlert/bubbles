@@ -3,34 +3,15 @@ app.factory('D3GraphOptionsService', function() {
 	var color = d3.scale.category20()
     var template = {
         chart: {
-            "tooltip": {
-      "duration": 100,
-      "gravity": "w",
-      "distance": 25,
-      "snapDistance": 0,
-      "classes": null,
-      "chartContainer": null,
-      "enabled": true,
-      "hideDelay": 200,
-      "headerEnabled": true,
-      "fixedTop": null,
-      "offset": {
-        "left": 0,
-        "top": 0
-      },
-      "hidden": true,
-      "data": null,
-      "id": "nvtooltip-94345"
-    },
             type: 'forceDirectedGraph',
-            height: 450,
+            height: (function(){ return nv.utils.windowSize().height - 300 })(),
             // width: (function(){ return nv.utils.windowSize().width / 2 - 20 })(),
             margin:{top: 20, right: 20, bottom: 20, left: 20},
             color: function(d){
                 return color(d.group)
             },
-            charge: -1000,
-            linkDist: 10,
+            charge: -500,
+            linkDist: 100,
             linkExtras: function(links) {
 
             	links[0].forEach(function(link){
@@ -80,6 +61,9 @@ app.factory('D3GraphOptionsService', function() {
 			        .attr("y", function(d) { return -25;})
 			        .attr("height",40)
 			        .attr("width", 40);
+
+                node.append("title")
+                  .text(function(d) { return d.displayName; });
             }
         }
     };
@@ -91,6 +75,10 @@ app.factory('D3GraphOptionsService', function() {
             var panesPerWindow = config.panesPerWindow || 1;
             var D3GraphOptions = angular.copy(template)
             D3GraphOptions.chart.width = (function(){ return nv.utils.windowSize().width / panesPerWindow})()
+
+            if(config.height) {
+                D3GraphOptions.chart.height = config.height;
+            }
             return D3GraphOptions
         }
     }

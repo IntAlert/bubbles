@@ -2,6 +2,11 @@ div.tag-selector(ng-show="availableTags.length > 0")
 	
 	div.tag-selector-tags
 
+		md-input-container
+			md-select(ng-model="booleanOperator")
+				md-option(ng-value=" 'AND' ") Match All
+				md-option(ng-value=" 'OR' ") Match One+
+
 		md-button.md-raised.md-primary(
 			ng-repeat="tag in availableTags"
 			ng-click="toggle(tag)"
@@ -9,7 +14,6 @@ div.tag-selector(ng-show="availableTags.length > 0")
 		) {{tag.name}}
 
 	div.tag-selector-summary
-		span Selected Tags: 
 		span(ng-show="availableTags.length == selectedTags.length") All
 		span(ng-hide="selectedTags.length") None
 		span(

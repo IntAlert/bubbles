@@ -1,6 +1,7 @@
 // Public
 var frontend_index = require('../routes/frontend/index');
 var frontend_auth = require('../routes/frontend/auth');
+var frontend_mygraph = require('../routes/frontend/mygraph');
 
 // Admin
 var admin_index = require('../routes/admin/index');
@@ -16,6 +17,7 @@ var initRoutes = function(app) {
 	// PUBLIC routes
 	app.use('/', frontend_index);
 	app.use('/frontend/auth', frontend_auth);
+	app.use('/frontend/mygraph', frontend_mygraph);
 
 	// ADMIN routes
 	app.use('/admin', admin_index);

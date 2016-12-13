@@ -14,7 +14,6 @@ exports.handler = function( event, context, callback) {
 
 
 	console.log('Starting with environment variables: ');
-	console.dir(process.env)
 
 	// get all existing users
 	getAllUsers()
@@ -42,6 +41,8 @@ function getAllUsers() {
 
 			data.users = users;
 
+			console.log("Found " + users.length + " users")
+
 	})
 	
 }
@@ -64,7 +65,7 @@ function getAllFriends() {
 	}
 
 	// batch 'em
-
+	console.log('Batching ' + batch.length + " FB requests");
 	var deferred = Q.defer();
 	fb.api('', 'post', { batch: batch }, function(res){
 
@@ -75,20 +76,22 @@ function getAllFriends() {
 			console.log(res.error)
 	    }
 
+	    var totalFriendships = 0;
 	    for (var i = res.length - 1; i >= 0; i--) {
 	    	var friendList = JSON.parse(res[i].body).data;
 
 	    	data.friendLists[i] = friendList;
 	    	
+	    	totalFriendships += friendList.length
 	    }
 
-	    console.log('APIdone')
+	    console.log('FB Batch responded with ' + totalFriendships + " friendships")
 
 	    deferred.resolve(data.friendLists)
 
 	})
 
-	console.log('waiting for API')
+	console.log('waiting for FB Batch response')
 
 	return deferred.promise
 
@@ -97,7 +100,7 @@ function getAllFriends() {
 
 function saveFriendships() {
 
-	console.log('saveFriendships')
+	console.log('save Friendships')
 
 	var records = [];
 	for (var i = data.friendLists.length - 1; i >= 0; i--) {
@@ -108,15 +111,17 @@ function saveFriendships() {
 		for (var j = friendList.length - 1; j >= 0; j--) {
 			var friend = friendList[j]
 
-			if (user.fb_id == friend.id) console.log('shout')
-			records.push({
-				ScrapeId: data.scrape.id,
-				friend1_id: user.fb_id,
-				friend2_id: friend.id
-			})
+			if (user.fb_id != friend.id)
+				records.push({
+					ScrapeId: data.scrape.id,
+					friend1_id: user.fb_id,
+					friend2_id: friend.id
+				})
 		}
 		
 	}
+
+	console.log('Saving ' + records.length + ' Friendships')
 
 	return models.Friendship.bulkCreate(records)
 		.then(function() { // Notice: There are no arguments here, as of right now you'll have to...

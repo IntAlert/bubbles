@@ -9,6 +9,13 @@ app.factory('FriendshipService', function($http) {
 			})
 	}
 
+	instance.getMostRecentScrape = function(id) {
+		return $http.get('/api/friendships/mostrecent/graph')
+			.then(function(response){
+				return response.data
+			})
+	}
+
 
 	return instance
 

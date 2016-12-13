@@ -1,5 +1,5 @@
 var app = angular
-	.module('BubblesPublic', ['ngMaterial', 'ngMessages'])
+	.module('BubblesPublic', ['ngMaterial', 'ngMessages','nvd3'])
 	// .config(function($compileProvider, $locationProvider, $mdThemingProvider, $mdIconProvider){
 	//   $mdIconProvider
 	//     .defaultIconSet('/components/material-design-icons/iconfont/MaterialIcons-Regular.svg', 24)

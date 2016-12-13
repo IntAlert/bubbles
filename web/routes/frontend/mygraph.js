@@ -7,9 +7,8 @@ var roles = new ConnectRoles();
 /* GET home page. */
 // anyone can access
 router.get('/', function(req, res, next) {
-	res.render('frontend/auth/login');
+	res.render('frontend/mygraph');
 });
-
 
 
 

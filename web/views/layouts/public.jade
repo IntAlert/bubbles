@@ -21,6 +21,7 @@ html(class='no-js')
     
 
     link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/components/nvd3/build/nv.d3.css')
     link(rel='stylesheet', href='/components/angular-material/angular-material.min.css')
 
 
@@ -43,16 +44,26 @@ html(class='no-js')
     script(src='/components/angular-messages/angular-messages.js')
     script(src='/components/angular-material/angular-material.js')
     script(src='/components/angular-aria/angular-aria.js')
+
+    script(src='/components/d3/d3.js')
+    script(src='/components/nvd3/build/nv.d3.js')
+    script(src='/components/angular-nvd3/dist/angular-nvd3.js')
       
 
     script(src='/javascripts/apps/public.js')
 
     //- Services
+    script(src="/javascripts/services/FriendshipService.js")
+    script(src="/javascripts/services/GraphFiltererService.js")
+    script(src="/javascripts/services/D3GraphOptionsService.js")
 
     //- controllers
     script(src="/javascripts/controllers/PublicLoginController.js")
+    script(src="/javascripts/controllers/PublicMygraphController.js")
 
     //- Directives
+    script(src="/javascripts/directives/graphMetrics.js")
+
 
     //- Custom Directives
 
@@ -65,3 +76,4 @@ html(class='no-js')
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
+
